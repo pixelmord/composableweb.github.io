@@ -1,0 +1,5 @@
+### PageSection
+
+```js
+  <PageSection />
+```

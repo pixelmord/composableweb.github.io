@@ -1,0 +1,5 @@
+### PageHeaderBranding
+
+```js
+  <PageHeaderBranding />
+```

@@ -2,6 +2,6 @@
 
 Repository for the website of ComposableWeb, visit https://composableweb.com
 
-**Built with Gatsby**
+**Built with NextJS**
 
-More info on https://www.gatsbyjs.org/
+More info on https://nextjs.org/

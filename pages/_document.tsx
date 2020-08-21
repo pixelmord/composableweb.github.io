@@ -1,6 +1,6 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-
+import GoogleFonts from 'next-google-fonts';
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -9,6 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
+        <GoogleFonts href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;800&display=swap" />
         <Head>
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
           <meta content="#ffffff" name="theme-color" />

@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
@@ -26,8 +28,11 @@ module.exports = {
     },
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
+    project: './tsconfig.json',
+    tsconfigRootDir: path.resolve(__dirname),
   },
   rules: {
+    'prettier/prettier': 'error',
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',

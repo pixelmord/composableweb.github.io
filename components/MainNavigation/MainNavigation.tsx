@@ -4,12 +4,10 @@ import { PropsWithoutRef, PropsWithChildren } from 'react';
 
 import { NextNavLink as NavLink } from '../NextNavLink';
 
-export const MainNavigation: React.FC<BoxProps> = (
-  props: PropsWithoutRef<PropsWithChildren<BoxProps>>
-) => (
+export const MainNavigation: React.FC<BoxProps> = (props: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (
   <Box {...props}>
     <NavLink href="/imprint" passHref={true}>
-      Test
+      Imprint
     </NavLink>
   </Box>
 );

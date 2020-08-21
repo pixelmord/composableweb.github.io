@@ -12,7 +12,7 @@ export const NextNavLink: React.FC<NextNavLinkProps> = ({
   replace,
   scroll,
   shallow,
-  passHref,
+  passHref = true,
   prefetch,
   ...rest
 }: PropsWithChildren<NextNavLinkProps>) => {

@@ -1,22 +1,11 @@
 /** @jsx jsx */
-import { jsx, Box, BoxProps } from 'theme-ui';
+import { jsx, BoxProps } from 'theme-ui';
 import { PropsWithChildren } from 'react';
+import { LandingPageSection, LandingPageSectionContent } from '~components/prestyled';
 
-export const PageSection: React.FC<BoxProps> = ({
-  children,
-  ...rest
-}: PropsWithChildren<BoxProps>) => (
-  <Box as="section" bg="white" {...rest}>
-    <Box
-      sx={{
-        margin: '0 auto',
-        maxWidth: 'sectionContentMax',
-        width: ['90%', '90%', '90%', '70%'],
-        py: [3, 4],
-      }}
-    >
-      {children}
-    </Box>
-  </Box>
+export const PageSection: React.FC<BoxProps> = ({ children, ...rest }: PropsWithChildren<BoxProps>) => (
+  <LandingPageSection {...rest}>
+    <LandingPageSectionContent>{children}</LandingPageSectionContent>
+  </LandingPageSection>
 );
 export default PageSection;

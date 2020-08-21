@@ -1,5 +1,5 @@
 ### NextLink
 
 ```js
-  <NextLink />
+<NextLink />
 ```

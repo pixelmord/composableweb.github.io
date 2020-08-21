@@ -1,18 +1,13 @@
 import React from 'react';
-import App from 'next/app';
 import { ThemeProvider } from 'theme-ui';
-
 import theme from '../styles';
+import PageLayout from '~components/PageLayout';
+const App = ({ Component, pageProps }) => (
+  <ThemeProvider theme={theme}>
+    <PageLayout>
+      <Component {...pageProps} />
+    </PageLayout>
+  </ThemeProvider>
+);
 
-class MyApp extends App {
-  public render(): JSX.Element {
-    const { Component, pageProps } = this.props;
-    return (
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    );
-  }
-}
-
-export default MyApp;
+export default App;

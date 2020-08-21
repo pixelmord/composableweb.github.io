@@ -1,5 +1,5 @@
 ### NextNavLink
 
 ```js
-  <NextNavLink />
+<NextNavLink />
 ```

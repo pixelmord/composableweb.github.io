@@ -13,7 +13,7 @@ export const NextLink: React.FC<NextLinkProps> = ({
   replace,
   scroll,
   shallow,
-  passHref,
+  passHref = true,
   prefetch,
   ...rest
 }: PropsWithChildren<NextLinkProps>) => (

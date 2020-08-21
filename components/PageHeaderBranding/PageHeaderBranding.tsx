@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Box, BoxProps, Text } from 'theme-ui';
+import { jsx, Box, BoxProps } from 'theme-ui';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 
 import config from '../../config';

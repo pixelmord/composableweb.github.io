@@ -10,4 +10,12 @@ export default merge(defaultTheme, {
       },
     },
   },
+  text: {
+    heading: {
+      a: {
+        color: 'inherit',
+        textDecoration: 'none',
+      },
+    },
+  },
 } as Theme);

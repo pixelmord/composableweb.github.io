@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex, FlexProps } from 'theme-ui';
+import { jsx, Flex, FlexProps, Box } from 'theme-ui';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import Head from 'next/head';
 import PageHeader from '../PageHeader';
@@ -20,7 +20,9 @@ export const PageLayout: React.FC<FlexProps> = ({
       <PageHeaderBranding />
       <MainNavigation />
     </PageHeader>
-    <main sx={{ flexGrow: 1 }}>{children}</main>
+    <Box as="main" sx={{ flexGrow: 1 }}>
+      {children}
+    </Box>
     <PageFooter />
   </Flex>
 );

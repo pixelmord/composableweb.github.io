@@ -1,0 +1,5 @@
+### PageFooter
+
+```js
+  <PageFooter />
+```

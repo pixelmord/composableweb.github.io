@@ -1,0 +1,5 @@
+### PageLayout
+
+```js
+  <PageLayout />
+```

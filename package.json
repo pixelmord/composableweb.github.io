@@ -96,9 +96,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/@composableweb/composableweb.github.io"
+    "url": "https://github.com/pixelmord/composableweb.github.io"
   },
   "bugs": {
-    "url": "https://github.com/@composableweb/composableweb.github.io/issues"
+    "url": "https://github.com/pixelmord/composableweb.github.io/issues"
   }
 }

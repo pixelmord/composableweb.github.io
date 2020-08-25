@@ -3,14 +3,14 @@ module.exports = {
     collect: {
       /* Add configuration here */
       startServerCommand: 'npm run build && npm run start',
-      url: ['http://localhost:3000']
+      url: ['http://localhost:3000'],
     },
     assert: {
       assertions: {
         'categories:performance': ['error', { minScore: 0.9 }],
         'categories:seo': ['error', { minScore: 0.9 }],
-        'categories:accessibility': ['error', { minScore: 1 }]
-      }
+        'categories:accessibility': ['error', { minScore: 0.9 }],
+      },
     },
     upload: {
       /* Add configuration here */

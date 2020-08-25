@@ -1,21 +1,19 @@
 /** @jsx jsx */
-import { jsx, Box, BoxProps, Grid } from 'theme-ui';
+import { jsx, BoxProps, Flex } from 'theme-ui';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
+import { LandingPageSection, LandingPageSectionContent } from 'prestyled';
 
 export const PageHeader: React.FC<BoxProps> = ({ children, ...rest }: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (
-  <Box as="header" sx={{ background: 'white' }} {...rest}>
-    <Grid
-      sx={{
-        gridTemplateColumns: 'auto 10rem',
-        gridTemplateRows: 'auto',
-        margin: '0 auto',
-        maxWidth: 'sectionContentMax',
-        width: ['90%', '90%', '90%', '70%'],
-        py: '1.45rem',
-      }}
-    >
-      {children}
-    </Grid>
-  </Box>
+  <LandingPageSection
+    as="header"
+    sx={{
+      background: 'rgba(0, 134, 151, 0.55)',
+    }}
+    {...rest}
+  >
+    <LandingPageSectionContent py={[3, 3, 4]}>
+      <Flex sx={{ justifyContent: 'space-between', alignItems: 'center' }}>{children}</Flex>
+    </LandingPageSectionContent>
+  </LandingPageSection>
 );
 export default PageHeader;

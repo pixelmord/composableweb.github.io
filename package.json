@@ -2,7 +2,7 @@
   "name": "composableweb.github.io",
   "private": true,
   "description": "ComposableWeb website",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Andreas Adam <andreas.adam@composableweb.com> (https://composableweb.com/)",
   "scripts": {
     "dev": "next dev",
@@ -23,7 +23,9 @@
     ]
   },
   "release": {
-    "branches": ["main"],
+    "branches": [
+      "main"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",

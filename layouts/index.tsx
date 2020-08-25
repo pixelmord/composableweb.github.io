@@ -3,8 +3,8 @@ import PageSection from '~components/PageSection';
 
 //import { parseISO, format } from 'date-fns';
 
-const DefaultMDXLayout = (frontMatter) => {
-  const slug = frontMatter.__resourcePath.replace('blog/', '').replace('.mdx', '');
+const DefaultMDXLayout = (): React.FC => {
+  // const slug = frontMatter.__resourcePath.replace('blog/', '').replace('.mdx', '');
   const layout = ({ children }) => {
     return <PageSection>{children}</PageSection>;
   };

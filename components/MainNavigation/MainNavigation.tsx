@@ -5,7 +5,7 @@ import { PropsWithoutRef, PropsWithChildren } from 'react';
 import { NextNavLink as NavLink } from '../NextNavLink';
 
 export const MainNavigation: React.FC<BoxProps> = (props: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (
-  <Box {...props}>
+  <Box {...props} as="nav">
     <NavLink href="/imprint">Imprint</NavLink>
   </Box>
 );

@@ -4,6 +4,7 @@ import GoogleFonts from 'next-google-fonts';
 import { ThemeProvider } from 'theme-ui';
 import theme from '../styles';
 import PageLayout from '~components/PageLayout';
+import MDXComponents from '~components/MDXComponents';
 
 const App = ({ Component, pageProps }) => (
   <>
@@ -11,7 +12,7 @@ const App = ({ Component, pageProps }) => (
     <Head>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
     </Head>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} components={MDXComponents}>
       <PageLayout>
         <Component {...pageProps} />
       </PageLayout>

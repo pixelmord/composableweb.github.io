@@ -5,7 +5,6 @@ const optimizedImages = require('next-optimized-images');
 const withMDX = require('next-mdx-enhanced')({
   layoutPath: 'layouts',
   defaultLayout: true,
-
   remarkPlugins: [require('remark-autolink-headings'), require('remark-slug'), require('remark-code-titles')],
   rehypePlugins: [mdxPrism],
   extendFrontMatter: {

@@ -6,6 +6,7 @@ import PageHeader from '../PageHeader';
 import MainNavigation from '../MainNavigation';
 import PageFooter from '../PageFooter';
 import PageHeaderBranding from '~components/PageHeaderBranding';
+import FooterNavigation from '~components/FooterNavigation';
 
 export const PageLayout: React.FC<FlexProps> = ({
   children,
@@ -23,7 +24,9 @@ export const PageLayout: React.FC<FlexProps> = ({
     <Box as="main" sx={{ flexGrow: 1 }}>
       {children}
     </Box>
-    <PageFooter />
+    <PageFooter>
+      <FooterNavigation />
+    </PageFooter>
   </Flex>
 );
 

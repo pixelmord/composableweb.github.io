@@ -1,25 +1,13 @@
 /** @jsx jsx */
-import { jsx, Box, BoxProps } from 'theme-ui';
+import { jsx, Flex, BoxProps } from 'theme-ui';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
+import { LandingPageSection, LandingPageSectionContent } from 'prestyled';
 
-export const PageFooter: React.FC<BoxProps> = ({
-  children,
-  ...rest
-}: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (
-  <Box as="footer" bg="grayDarkest" {...rest}>
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'auto 10rem',
-        gridTemplateRows: 'auto',
-        margin: '0 auto',
-        maxWidth: 'sectionContentMax',
-        width: ['90%', '90%', '90%', '70%'],
-        py: '1.45rem',
-      }}
-    >
-      {children}
-    </Box>
-  </Box>
+export const PageFooter: React.FC<BoxProps> = ({ children, ...rest }: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (
+  <LandingPageSection as="footer" bg="grayDarkest" {...rest}>
+    <LandingPageSectionContent py={[3, 3, 4]}>
+      <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>{children}</Flex>
+    </LandingPageSectionContent>
+  </LandingPageSection>
 );
 export default PageFooter;

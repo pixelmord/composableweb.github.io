@@ -5,13 +5,18 @@ const optimizedImages = require('next-optimized-images');
 const withMDX = require('next-mdx-enhanced')({
   layoutPath: 'layouts',
   defaultLayout: true,
-  remarkPlugins: [require('remark-autolink-headings'), require('remark-slug'), require('remark-code-titles')],
+  remarkPlugins: [require('remark-slug'), require('remark-autolink-headings'), require('remark-code-titles')],
   rehypePlugins: [mdxPrism],
   extendFrontMatter: {
-    process: (mdxContent) => ({
-      wordCount: mdxContent.split(/\s+/gu).length,
-      readingTime: readingTime(mdxContent),
-    }),
+    process: (mdxContent, frontMatter) => {
+      const parts = frontMatter.__resourcePath.split('/');
+      return {
+        wordCount: mdxContent.split(/\s+/gu).length,
+        readingTime: readingTime(mdxContent),
+        path: frontMatter.__resourcePath.replace('.mdx', ''),
+        slug: parts[parts.length - 1].split('.').slice(0, -1).join('.'),
+      };
+    },
   },
 });
 

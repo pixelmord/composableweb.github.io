@@ -1,7 +1,7 @@
 import { defaultTheme } from 'prestyled';
 import { merge, Theme } from 'theme-ui';
 export default merge(defaultTheme, {
-  colors: { ...defaultTheme.colors, primary: 'hsl(330.1, 97.1%, 45%)' },
+  colors: { ...defaultTheme.colors, primary: 'hsl(79.7, 60.8%, 50%)' },
   fonts: {
     heading: `'Work Sans', sans-serif`,
     body: `'Work Sans', sans-serif`,
@@ -27,6 +27,7 @@ export default merge(defaultTheme, {
           content: '""',
           position: 'absolute',
           backgroundColor: 'grayLighter',
+          left: 0,
           bottom: '-70px',
           zIndex: -1,
           width: '100%',

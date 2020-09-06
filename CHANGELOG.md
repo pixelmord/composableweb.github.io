@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/pixelmord/composableweb.github.io/compare/v1.1.0...v1.2.0) (2020-09-06)
+
+
+### Features
+
+* **content:** add code recipe content ([2d2154d](https://github.com/pixelmord/composableweb.github.io/commit/2d2154dc78df125b0c93e0d914389fd805f1917a))
+
 # [1.1.0](https://github.com/pixelmord/composableweb.github.io/compare/v1.0.0...v1.1.0) (2020-09-06)
 
 

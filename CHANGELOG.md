@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/pixelmord/composableweb.github.io/compare/v1.0.0...v1.1.0) (2020-09-06)
+
+
+### Features
+
+* add footer navigation ([d31660c](https://github.com/pixelmord/composableweb.github.io/commit/d31660c0ad9993fde3bef30c6236f6616baf6d7e))
+* blogging setup ([9a15917](https://github.com/pixelmord/composableweb.github.io/commit/9a15917ca4f592d12ba6d49501aeb390918b2fea))
+* **mdx:** anchor links for headers ([599f7f1](https://github.com/pixelmord/composableweb.github.io/commit/599f7f188569d30090be78ee2cf8857f994d2ffc))
+
 # 1.0.0 (2020-08-25)
 
 

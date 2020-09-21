@@ -8,7 +8,7 @@ import NextLink from '~components/NextLink';
 
 export const PageHeaderBranding: React.FC<BoxProps> = (props: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (
   <Box {...props}>
-    <Heading my={0} variant="h3" color="black">
+    <Heading my={0} variant="h4" color="black">
       <NextLink href="/">{config.siteTitle}</NextLink>
     </Heading>
   </Box>

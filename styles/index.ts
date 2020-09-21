@@ -1,15 +1,16 @@
 import { defaultTheme } from 'prestyled';
 import { merge, Theme } from 'theme-ui';
+
 export default merge(defaultTheme, {
-  colors: { ...defaultTheme.colors, primary: 'hsl(79.7, 60.8%, 50%)' },
+  colors: { ...defaultTheme.colors },
   fonts: {
-    heading: `'Work Sans', sans-serif`,
-    body: `'Work Sans', sans-serif`,
+    heading: `'Archivo Narrow', sans-serif`,
+    body: `'Barlow', sans-serif`,
     mono: `Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace`,
   },
   fontWeights: {
     bold: 600,
-    heading: 600,
+    heading: 500,
   },
   landingPage: {
     section: {
@@ -41,9 +42,9 @@ export default merge(defaultTheme, {
   },
   text: {
     heading: {
-      fontWeight: 600,
+      fontWeight: 500,
       fontStyle: 'normal',
-      lineHeight: 1.2,
+      lineHeight: 'calc(4px + 2ex)',
       a: {
         color: 'inherit',
         textDecoration: 'none',
@@ -55,7 +56,7 @@ export default merge(defaultTheme, {
       fontFamily: 'body',
       color: 'text',
       bg: 'background',
-      lineHeight: 1.6,
+      lineHeight: 'calc(8px + 2ex)',
     },
   },
 } as Theme);

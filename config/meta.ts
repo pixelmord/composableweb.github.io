@@ -1,8 +1,8 @@
 export default {
   pathPrefix: '/', // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "/portfolio"
 
-  siteTitle: 'ComposableWeb', // Navigation and Site Title
-  siteTitleAlt: 'Starter', // Alternative Site title for SEO
+  siteTitle: 'Composable WEB', // Navigation and Site Title
+  siteTitleAlt: 'Composable Web', // Alternative Site title for SEO
   siteHeadline: 'Composable Web - ', // Headline for schema.org JSONLD
   siteUrl: 'https://composableweb.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element

@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/pixelmord/composableweb.github.io/compare/v1.2.0...v1.3.0) (2020-09-22)
+
+
+### Features
+
+* add 3d animation to blog page ([5ad53d0](https://github.com/pixelmord/composableweb.github.io/commit/5ad53d03e40165013fbe12825cb82c40765a1af6))
+
 # [1.2.0](https://github.com/pixelmord/composableweb.github.io/compare/v1.1.0...v1.2.0) (2020-09-06)
 
 

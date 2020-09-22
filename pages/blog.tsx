@@ -7,6 +7,7 @@ import { frontMatter as blogPosts } from './blog/**/*.mdx';
 import PageSection from '~components/PageSection';
 
 import { Text } from 'prestyled';
+import ThreeDixelDrawing from '~components/ThreeDixelDrawing';
 
 const url = 'https://composableweb.com/blog';
 const title = 'Blog – ComposableWeb - Andreas Adam (@pixelmord)';
@@ -16,7 +17,6 @@ const Blog = () => {
   const filteredBlogPosts = blogPosts
     .filter((post) => !post.draft)
     .sort((a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)));
-  console.log(filteredBlogPosts);
   return (
     <>
       <NextSeo
@@ -30,7 +30,24 @@ const Blog = () => {
         }}
       />
       <PageSection>
-        {!filteredBlogPosts.length && <Text>Constant procrastination led to an empty page</Text>}
+        <ThreeDixelDrawing
+          matrix={[
+            [0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0],
+            [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          ]}
+        />
+        {!filteredBlogPosts.length && (
+          <Text sx={{ textAlign: 'center' }}>Constant procrastination led to an empty page</Text>
+        )}
         {filteredBlogPosts.map((post) => (
           <BlogPostTeaser {...post} key={post.title} />
         ))}

@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/pixelmord/composableweb.github.io/compare/v1.3.0...v1.3.1) (2020-09-28)
+
+
+### Bug Fixes
+
+* types, code style ([c21b56a](https://github.com/pixelmord/composableweb.github.io/commit/c21b56a1f9025834b8abf123456dcb4364fa3470))
+
 # [1.3.0](https://github.com/pixelmord/composableweb.github.io/compare/v1.2.0...v1.3.0) (2020-09-22)
 
 

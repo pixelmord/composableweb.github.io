@@ -2,8 +2,10 @@
 import { jsx } from 'theme-ui';
 import { NextSeo } from 'next-seo';
 import BlogPostTeaser from '~components/BlogPostTeaser';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { frontMatter as blogPosts } from './blog/**/*.mdx';
+
 import PageSection from '~components/PageSection';
 
 import { Text } from 'prestyled';

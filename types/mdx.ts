@@ -1,4 +1,3 @@
-// types/mdx.d.ts
 export type FrontMatter = {
   __resourcePath: string;
   title: string;
@@ -10,9 +9,3 @@ export type FrontMatter = {
   slug: string;
   readingTime: { text: string };
 };
-
-declare module '*.mdx' {
-  let MDXComponent: (props: any) => JSX.Element;
-  export default MDXComponent;
-  export const frontMatter: FrontMatter[] | Frontmatter;
-}

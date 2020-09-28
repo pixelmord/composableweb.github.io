@@ -18,9 +18,9 @@ export const ThreeDixel: React.FC<ThreeDixelProps> = ({ position, ...rest }: Thr
       ref={mesh}
       position={position}
       scale={hovered ? [1.2, 1.2, 1.2] : [1, 1, 1]}
-      onClick={(e) => setActive(!active)}
-      onPointerOver={(e) => setHover(true)}
-      onPointerOut={(e) => setHover(false)}
+      onClick={() => setActive(!active)}
+      onPointerOver={() => setHover(true)}
+      onPointerOut={() => setHover(false)}
     >
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <meshPhongMaterial attach="material" color={hovered ? 'pink' : 'red'} />

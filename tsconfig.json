@@ -18,7 +18,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": { "~components/*": ["components/*"] }
+    "paths": { "~components/*": ["components/*"], "~lib/*": ["lib/*"] }
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "*.js", "@types/*"]

@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx, LinkProps } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Link, LinkProps } from '@chakra-ui/core';
 import { PropsWithChildren } from 'react';
-import { default as Link, LinkProps as NLinkProps } from 'next/link';
-
-import { NavLink } from 'prestyled';
+import { default as NLink, LinkProps as NLinkProps } from 'next/link';
 
 type NextNavLinkProps = Omit<LinkProps, 'as'> & NLinkProps;
 export const NextNavLink: React.FC<NextNavLinkProps> = ({
@@ -17,7 +16,7 @@ export const NextNavLink: React.FC<NextNavLinkProps> = ({
   ...rest
 }: PropsWithChildren<NextNavLinkProps>) => {
   return (
-    <Link
+    <NLink
       href={href}
       as={as}
       replace={replace}
@@ -26,8 +25,8 @@ export const NextNavLink: React.FC<NextNavLinkProps> = ({
       passHref={passHref}
       prefetch={prefetch}
     >
-      <NavLink {...rest} />
-    </Link>
+      <Link {...rest} textDecoration="none" mr="2" />
+    </NLink>
   );
 };
 export default NextNavLink;

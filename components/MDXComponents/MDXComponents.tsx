@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { jsx, HeadingProps } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Heading, HeadingProps, Link } from '@chakra-ui/core';
 import { PropsWithChildren } from 'react';
-import { Heading, Link } from 'prestyled';
 
 const AnchorHeading: React.FC<HeadingProps> = ({
   children,
@@ -10,7 +10,7 @@ const AnchorHeading: React.FC<HeadingProps> = ({
 }: PropsWithChildren<HeadingProps & { id?: string }>) => (
   <Heading
     {...rest}
-    sx={{
+    css={{
       scrollMarginTop: '100px',
       scrollSnapMargin: '100px', // Safari
       '&[id]:hover a': { opacity: 1, color: 'primary' },
@@ -19,7 +19,7 @@ const AnchorHeading: React.FC<HeadingProps> = ({
   >
     {children}
     {id && (
-      <Link aria-label="anchor" sx={{ opacity: 0, ml: 1, color: 'primary' }} href={`#${id}`}>
+      <Link aria-label="anchor" ml="0.375rem" color="blue.500" css={{ opacity: 0 }} href={`#${id}`}>
         #
       </Link>
     )}

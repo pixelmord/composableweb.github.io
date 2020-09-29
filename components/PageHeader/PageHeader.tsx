@@ -1,19 +1,19 @@
 /** @jsx jsx */
-import { jsx, BoxProps, Flex } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Box, Flex, BoxProps } from '@chakra-ui/core';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
-import { LandingPageSection, LandingPageSectionContent } from 'prestyled';
 
 export const PageHeader: React.FC<BoxProps> = ({ children, ...rest }: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (
-  <LandingPageSection
+  <Box
     as="header"
-    sx={{
+    css={{
       background: 'rgba(0, 134, 151, 0.55)',
     }}
     {...rest}
   >
-    <LandingPageSectionContent py={[3, 3, 4]}>
-      <Flex sx={{ justifyContent: 'space-between', alignItems: 'center' }}>{children}</Flex>
-    </LandingPageSectionContent>
-  </LandingPageSection>
+    <Box py={[3, 3, 4]}>
+      <Flex css={{ justifyContent: 'space-between', alignItems: 'center' }}>{children}</Flex>
+    </Box>
+  </Box>
 );
 export default PageHeader;

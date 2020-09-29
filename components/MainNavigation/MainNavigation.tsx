@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, Box, BoxProps } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Box, BoxProps } from '@chakra-ui/core';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 
 import { NextNavLink as NavLink } from '../NextNavLink';

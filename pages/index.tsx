@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Text, Heading } from '@chakra-ui/core';
 import { NextPage } from 'next';
 import PageSection from '~components/PageSection';
-import { Heading, Text } from 'prestyled';
 
 const Home: NextPage = () => {
   return (
-    <PageSection variant="primary" sx={{ textAlign: 'center' }}>
+    <PageSection>
       <Heading as="h1">Rapid prototyping for the web</Heading>
       <Heading as="h2" variant="h3">
         Enterprise ready modern frontends backed by serverless microservices

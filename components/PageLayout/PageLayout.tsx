@@ -1,10 +1,12 @@
 /** @jsx jsx */
-import { jsx, Flex, FlexProps, Box } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Box, FlexProps, Flex } from '@chakra-ui/core';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import Head from 'next/head';
-import PageHeader from '../PageHeader';
-import MainNavigation from '../MainNavigation';
-import PageFooter from '../PageFooter';
+
+import PageHeader from '~components/PageHeader';
+import MainNavigation from '~components/MainNavigation';
+import PageFooter from '~components/PageFooter';
 import PageHeaderBranding from '~components/PageHeaderBranding';
 import FooterNavigation from '~components/FooterNavigation';
 
@@ -12,7 +14,7 @@ export const PageLayout: React.FC<FlexProps> = ({
   children,
   ...rest
 }: PropsWithoutRef<PropsWithChildren<FlexProps>>) => (
-  <Flex {...rest} sx={{ minHeight: '100vh', flexDirection: 'column' }}>
+  <Flex {...rest} css={{ minHeight: '100vh', flexDirection: 'column' }}>
     <Head>
       <title>ComposableWeb</title>
       <link rel="icon" href="/favicon.ico" />
@@ -21,7 +23,7 @@ export const PageLayout: React.FC<FlexProps> = ({
       <PageHeaderBranding />
       <MainNavigation />
     </PageHeader>
-    <Box as="main" sx={{ flexGrow: 1 }}>
+    <Box as="main" css={{ flexGrow: 1 }}>
       {children}
     </Box>
     <PageFooter>

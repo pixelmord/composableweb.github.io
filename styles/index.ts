@@ -1,14 +1,14 @@
-import { defaultTheme } from 'prestyled';
-import { merge, Theme } from 'theme-ui';
+import { theme } from '@chakra-ui/core';
 
-export default merge(defaultTheme, {
-  colors: { ...defaultTheme.colors },
+export default {
+  ...theme,
   fonts: {
     heading: `'Archivo Narrow', sans-serif`,
     body: `'Barlow', sans-serif`,
     mono: `Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace`,
   },
   fontWeights: {
+    ...theme.fontWeights,
     bold: 600,
     heading: 500,
   },
@@ -59,4 +59,4 @@ export default merge(defaultTheme, {
       lineHeight: 'calc(8px + 2ex)',
     },
   },
-} as Theme);
+};

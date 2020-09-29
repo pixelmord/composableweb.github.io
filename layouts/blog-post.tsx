@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, Box } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Box, Heading } from '@chakra-ui/core';
 import React from 'react';
-import PageSection from '~components/PageSection';
+import ArticleLayout from '~components/ArticleLayout';
 
 import { parseISO, format } from 'date-fns';
-import { Heading } from 'prestyled';
 import { FrontMatter } from 'types/mdx';
 
 const BlogMDXLayout: React.FC = ({
@@ -12,11 +12,11 @@ const BlogMDXLayout: React.FC = ({
   frontMatter: { title, publishedAt },
 }: React.PropsWithChildren<{ frontMatter: FrontMatter }>) => {
   return (
-    <PageSection>
+    <ArticleLayout>
       <Heading as="h1">{title}</Heading>
       <Box>
         <time
-          sx={{
+          css={{
             color: 'grayDark',
             fontSize: '0.77778rem',
             letterSpacing: '2px',
@@ -29,7 +29,7 @@ const BlogMDXLayout: React.FC = ({
         </time>
       </Box>
       {children}
-    </PageSection>
+    </ArticleLayout>
   );
 };
 export default BlogMDXLayout;

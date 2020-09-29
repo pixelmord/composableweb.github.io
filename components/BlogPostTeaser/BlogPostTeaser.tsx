@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import { jsx, Box, BoxProps } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Box, BoxProps, Heading } from '@chakra-ui/core';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import { FrontMatter } from 'types/mdx';
-import { Heading } from 'prestyled';
 import NextLink from '~components/NextLink';
 
 export type BlogPostProps = BoxProps & FrontMatter;

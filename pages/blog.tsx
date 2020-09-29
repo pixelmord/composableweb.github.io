@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Text } from '@chakra-ui/core';
 import { NextSeo } from 'next-seo';
 import BlogPostTeaser from '~components/BlogPostTeaser';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -8,7 +9,6 @@ import { frontMatter as blogPosts } from './blog/**/*.mdx';
 
 import PageSection from '~components/PageSection';
 
-import { Text } from 'prestyled';
 import ThreeDixelDrawing from '~components/ThreeDixelDrawing';
 
 const url = 'https://composableweb.com/blog';

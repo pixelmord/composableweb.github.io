@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx, LinkProps } from 'theme-ui';
+import { jsx } from '@emotion/core';
+import { Link, LinkProps } from '@chakra-ui/core';
 import { PropsWithChildren } from 'react';
 import { default as NLink, LinkProps as NLinkProps } from 'next/link';
-
-import { Link } from 'prestyled';
 
 type NextLinkProps = Omit<LinkProps, 'as'> & NLinkProps;
 

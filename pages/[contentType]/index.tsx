@@ -23,7 +23,10 @@ export type RecipeOverviewpageProps = {
   contentType: string;
 };
 
-const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({ posts, contentType }: RecipeOverviewpageProps) => {
+const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({
+  posts = [],
+  contentType,
+}: RecipeOverviewpageProps) => {
   const filteredPosts = posts
     .filter((post) => !post.data.frontmatter.draft)
     .sort(

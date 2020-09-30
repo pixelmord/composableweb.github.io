@@ -107,19 +107,24 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths: GetStaticPaths = async () => {
   const directories = await fg(`**`, { onlyDirectories: true, cwd: './content', deep: 1 });
   const posts = await Promise.all(
-    directories.map((dir) => fg(`${dir}/*.{md,mdx}`, { onlyFiles: true, cwd: './content', deep: 1 }))
+    directories.map((dir) =>
+      fg(`${dir}/*.{md,mdx}`, { onlyFiles: true, cwd: './content', deep: 1 }).then((paths) =>
+        paths.map((path) => ({
+          path,
+          dir,
+        }))
+      )
+    )
   );
   return {
-    paths: directories.flatMap((contentType) =>
-      posts.flat().map((post) => {
-        return {
-          params: {
-            slug: `${contentType}/${slugFromFilepath(post)}`,
-            contentType,
-          },
-        };
-      })
-    ),
+    paths: posts.flat().map((post) => {
+      return {
+        params: {
+          slug: `${slugFromFilepath(post.path)}`,
+          contentType: post.dir,
+        },
+      };
+    }),
     fallback: true,
   };
 };

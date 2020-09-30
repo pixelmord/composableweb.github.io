@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import { Text } from '@chakra-ui/core';
+import fg from 'fast-glob';
 
 import { fetchAllMarkdownDocs } from '~lib/server/utils';
 import NextLink from '~components/NextLink';
-import { CodeRecipeFrontmatter } from '~lib/contentTypes';
+import { PostFrontmatter } from '~lib/contentTypes';
 import { MarkdownFileProps } from '~lib/propTypes';
 import { slugFromFilepath } from '~lib/slugHelpers';
 import ThreeDixelDrawing from '~components/ThreeDixelDrawing';
@@ -16,9 +17,13 @@ const title = 'Blog – ComposableWeb - Andreas Adam (@pixelmord)';
 const description =
   'Ideas and experiments in rapid prototyping, Front-End Development, technical leadership and enterprise architecture';
 
-export type RecipeOverviewpageProps = { posts: MarkdownFileProps<CodeRecipeFrontmatter>[] };
+export type RecipeOverviewpageProps = {
+  posts: MarkdownFileProps<PostFrontmatter>[];
+  preview: boolean;
+  contentType: string;
+};
 
-const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({ posts }: RecipeOverviewpageProps) => {
+const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({ posts, contentType }: RecipeOverviewpageProps) => {
   const filteredPosts = posts
     .filter((post) => !post.data.frontmatter.draft)
     .sort(
@@ -57,9 +62,9 @@ const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({ posts }: Recipe
         </>
       )}
       {!!filteredPosts.length &&
-        filteredPosts.map((recipe) => (
-          <NextLink key={recipe.fileRelativePath} href={`/code-recipes/${slugFromFilepath(recipe.fileRelativePath)}`}>
-            {recipe.data.frontmatter.title}
+        filteredPosts.map((post) => (
+          <NextLink key={post.fileRelativePath} href={`/${contentType}/${slugFromFilepath(post.fileRelativePath)}`}>
+            {post.data.frontmatter.title}
           </NextLink>
         ))}
     </>
@@ -67,11 +72,30 @@ const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({ posts }: Recipe
 };
 export default RecipeOverviewPage;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await fetchAllMarkdownDocs<CodeRecipeFrontmatter>('code-recipes');
+export const getStaticProps: GetStaticProps<RecipeOverviewpageProps> = async ({
+  preview,
+  params: { contentType },
+}: GetStaticPropsContext<{ contentType: string }>) => {
+  const posts = await fetchAllMarkdownDocs<PostFrontmatter>(contentType as string);
   return {
     props: {
       posts,
+      contentType,
+      preview: preview || false,
     },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const directories = await fg(`**`, { onlyDirectories: true, cwd: './content', deep: 1 });
+  return {
+    paths: directories.map((directory) => {
+      return {
+        params: {
+          contentType: directory,
+        },
+      };
+    }),
+    fallback: true,
   };
 };

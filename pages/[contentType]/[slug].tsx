@@ -93,10 +93,10 @@ export default function RecipePage(props: InferGetStaticPropsType<typeof getStat
 
 export const getStaticProps: GetStaticProps<
   MarkdownPageProps<CodeRecipeFrontmatter> | GithubPreviewProps<CodeRecipeFrontmatter>['props']
-> = async function ({ preview, previewData, params }) {
+> = async function ({ preview, previewData, params: { slug, contentType } }) {
   const props = await getMarkdownProps<CodeRecipeFrontmatter>(
-    'code-recipes',
-    `${params.slug}.mdx`,
+    contentType as string,
+    `${slug}.mdx`,
     preview,
     previewData
   );
@@ -105,15 +105,21 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const recipes = await fg(`./content/code-recipes/**/*.mdx`);
+  const directories = await fg(`**`, { onlyDirectories: true, cwd: './content', deep: 1 });
+  const posts = await Promise.all(
+    directories.map((dir) => fg(`${dir}/*.{md,mdx}`, { onlyFiles: true, cwd: './content', deep: 1 }))
+  );
   return {
-    paths: recipes.map((recipe) => {
-      return {
-        params: {
-          slug: `code-recipes/${slugFromFilepath(recipe)}`,
-        },
-      };
-    }),
+    paths: directories.flatMap((contentType) =>
+      posts.flat().map((post) => {
+        return {
+          params: {
+            slug: `${contentType}/${slugFromFilepath(post)}`,
+            contentType,
+          },
+        };
+      })
+    ),
     fallback: true,
   };
 };

@@ -4,7 +4,7 @@ import fg from 'fast-glob';
 import fs from 'fs';
 import path from 'path';
 import { getGithubPreviewProps, parseMarkdown, GithubPreviewProps } from 'next-tinacms-github';
-import { MarkdownPageProps, MarkdownFileProps, MarkdownFrontmatter } from '../propTypes';
+import { MarkdownPageProps, MarkdownFileProps, MarkdownFrontmatter, MarkdownFileData } from '../propTypes';
 import mergeDeep from '~lib/objectHelpers';
 import { mdxRemoteOptions } from '~lib/mdx';
 
@@ -25,6 +25,7 @@ export async function fetchMarkdownDoc<T extends MarkdownFrontmatter>(
       markdownBody: mdxSource.renderedOutput,
       markdownObject: mdxSource,
     },
+    sha: '',
   } as MarkdownFileProps<T>;
 }
 
@@ -46,15 +47,15 @@ export const getMarkdownProps = async <T extends MarkdownFrontmatter>(
   fileName: string,
   preview: boolean,
   previewData: { github_access_token: string; working_repo_full_name: string; head_branch: string }
-): Promise<{ props: MarkdownPageProps<T> } | GithubPreviewProps<T>> => {
+): Promise<{ props: MarkdownPageProps<T> } | GithubPreviewProps<MarkdownFileData<T>>> => {
   const fileRelativePath = `content/${subdir}/${fileName}`;
   if (preview) {
-    const previewProps = await getGithubPreviewProps<T>({
+    const previewProps = await getGithubPreviewProps<MarkdownFileData<T>>({
       ...previewData,
       working_repo_full_name: process.env.NEXT_PUBLIC_REPO_FULL_NAME,
       head_branch: process.env.NEXT_PUBLIC_BASE_BRANCH,
       fileRelativePath: fileRelativePath,
-      parse: parseMarkdown,
+      parse: parseMarkdown as any,
     });
     const markdownObject = await mdxRenderToString(previewProps.props.file.data.markdownBody, {
       scope: previewProps.props.file.data.frontmatter,
@@ -73,7 +74,7 @@ export const getMarkdownProps = async <T extends MarkdownFrontmatter>(
       preview: false,
       file,
     },
-  } as { props: MarkdownPageProps<T> };
+  };
 };
 
 export const mdxRenderToString = (source, options) => {

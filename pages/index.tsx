@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <PageSection>
       <Heading as="h1">Rapid prototyping for the web</Heading>
-      <Heading as="h2" variant="h3">
+      <Heading as="h2" size="lg">
         Enterprise ready modern frontends backed by serverless microservices
       </Heading>
       <Text as="p">

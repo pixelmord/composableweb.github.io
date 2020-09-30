@@ -92,7 +92,7 @@ export default function RecipePage(props: InferGetStaticPropsType<typeof getStat
 }
 
 export const getStaticProps: GetStaticProps<
-  MarkdownPageProps<CodeRecipeFrontmatter> | GithubPreviewProps<CodeRecipeFrontmatter>['props']
+  MarkdownPageProps<CodeRecipeFrontmatter> | GithubPreviewProps<MarkdownFileData<CodeRecipeFrontmatter>>['props']
 > = async function ({ preview, previewData, params: { slug, contentType } }) {
   const props = await getMarkdownProps<CodeRecipeFrontmatter>(
     contentType as string,

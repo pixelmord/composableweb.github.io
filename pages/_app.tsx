@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import GoogleFonts from 'next-google-fonts';
 import { Global, css } from '@emotion/core';
-import { MDXProvider } from '@mdx-js/react';
 import { ColorModeProvider, ThemeProvider, CSSReset } from '@chakra-ui/core';
 import { DefaultSeo } from 'next-seo';
 import App, { AppProps } from 'next/app';
@@ -12,7 +11,6 @@ import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
 import config from '../config';
 import theme from '../styles';
 import PageLayout from '~components/PageLayout';
-import MDXComponents from '~components/MDXComponents';
 
 export default class Site extends App {
   cms: TinaCMS;
@@ -33,6 +31,7 @@ export default class Site extends App {
           authCallbackRoute: '/api/create-github-access-token',
           clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
           baseRepoFullName: process.env.NEXT_PUBLIC_REPO_FULL_NAME,
+          baseBranch: process.env.NEXT_PUBLIC_BASE_BRANCH,
         }),
       },
       /**
@@ -53,26 +52,24 @@ export default class Site extends App {
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
         <ThemeProvider theme={theme}>
-          <MDXProvider components={MDXComponents}>
-            <ColorModeProvider value="light">
-              <CSSReset />
-              <Global
-                styles={css`
-                  #__next {
-                    height: 100%;
-                  }
-                `}
-              />
-              <DefaultSeo {...config.meta} />
-              <TinaProvider cms={this.cms}>
-                <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
-                  <PageLayout>
-                    <Component {...pageProps} />
-                  </PageLayout>
-                </TinacmsGithubProvider>
-              </TinaProvider>
-            </ColorModeProvider>
-          </MDXProvider>
+          <ColorModeProvider value="light">
+            <CSSReset />
+            <Global
+              styles={css`
+                #__next {
+                  height: 100%;
+                }
+              `}
+            />
+            <DefaultSeo {...config.meta} />
+            <TinaProvider cms={this.cms}>
+              <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
+                <PageLayout>
+                  <Component {...pageProps} />
+                </PageLayout>
+              </TinacmsGithubProvider>
+            </TinaProvider>
+          </ColorModeProvider>
         </ThemeProvider>
       </>
     );

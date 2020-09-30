@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { GetStaticPaths, GetStaticPropsContext } from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import { Form, usePlugin } from 'tinacms';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { InlineText } from 'react-tinacms-inline';
-import Head from 'next/head';
+
 import fg from 'fast-glob';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { GithubPreviewProps } from 'next-tinacms-github';
@@ -22,12 +22,9 @@ import OpenAuthoringInlineForm from '~components/OpenAuthoringInlineForm';
 import { Heading } from '@chakra-ui/core';
 import TinaEditLink from '~components/TinaEditLink';
 
-const Recipe = ({
-  file,
-  preview,
-}:
-  | MarkdownPageProps<CodeRecipeFrontmatter>
-  | GithubPreviewProps<CodeRecipeFrontmatter>['props']): React.ReactElement => {
+import { mdxHydrateMarkdown } from '~lib/client/utils';
+
+const Recipe = ({ file, preview }: InferGetStaticPropsType<typeof getStaticProps>): React.ReactElement => {
   const router = useRouter();
 
   const formConfig = {
@@ -47,7 +44,7 @@ const Recipe = ({
   };
 
   // Registers Tina Form
-  const [data, form] = useGithubMarkdownForm(file as GitFile<CodeRecipeFrontmatter>, formConfig) as [
+  const [data, form] = useGithubMarkdownForm(file as GitFile<MarkdownFileData<CodeRecipeFrontmatter>>, formConfig) as [
     MarkdownFileData<CodeRecipeFrontmatter>,
     Form
   ];
@@ -55,6 +52,7 @@ const Recipe = ({
 
   const frontmatter = data.frontmatter;
   const markdownBody = data.markdownBody;
+  const markdown = mdxHydrateMarkdown(file.data.markdownObject, { scope: frontmatter });
   return (
     <OpenAuthoringInlineForm form={form} path={file.fileRelativePath} preview={preview}>
       <TinaEditLink />
@@ -66,15 +64,20 @@ const Recipe = ({
             <Heading as="h1">
               <InlineText name="frontmatter.title" />
             </Heading>
+            {preview ? (
+              <InlineWysiwyg name="markdownBody" format="markdown">
+                {markdownBody}
+              </InlineWysiwyg>
+            ) : (
+              markdown
+            )}
           </>
         )}
       </Layout>
     </OpenAuthoringInlineForm>
   );
 };
-export default function RecipePage(
-  props: MarkdownPageProps<CodeRecipeFrontmatter> | GithubPreviewProps<CodeRecipeFrontmatter>['props']
-): React.ReactElement {
+export default function RecipePage(props: InferGetStaticPropsType<typeof getStaticProps>): React.ReactElement {
   const router = useRouter();
 
   if (!router.isFallback && !props.file) {
@@ -88,16 +91,9 @@ export default function RecipePage(
   return <Recipe {...props} />;
 }
 
-export async function getStaticProps({
-  preview,
-  previewData,
-  params,
-}: GetStaticPropsContext<{ slug: string }>): Promise<
-  | {
-      props: MarkdownPageProps<CodeRecipeFrontmatter>;
-    }
-  | GithubPreviewProps<CodeRecipeFrontmatter>
-> {
+export const getStaticProps: GetStaticProps<
+  MarkdownPageProps<CodeRecipeFrontmatter> | GithubPreviewProps<CodeRecipeFrontmatter>['props']
+> = async function ({ preview, previewData, params }) {
   const props = await getMarkdownProps<CodeRecipeFrontmatter>(
     'code-recipes',
     `${params.slug}.mdx`,
@@ -106,7 +102,7 @@ export async function getStaticProps({
   );
 
   return props;
-}
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const recipes = await fg(`./content/code-recipes/**/*.mdx`);

@@ -1,19 +1,17 @@
 import { NextPage } from 'next';
 import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 
-export type BlogFrontmatter = {
+export type PostFrontmatter = {
   title: string;
   createdAt: string;
   publishedAt: string;
-  draft: 'true' | 'false';
+  draft: boolean;
 };
 
-export type CodeRecipeFrontmatter = {
-  title: string;
-  createdAt: string;
-  publishedAt: string;
-  draft: 'true' | 'false';
-};
+export type BlogFrontmatter = PostFrontmatter;
+
+export type CodeRecipeFrontmatter = PostFrontmatter;
+export type PageFrontmatter = PostFrontmatter;
 
 export type PageData = {
   title: string;

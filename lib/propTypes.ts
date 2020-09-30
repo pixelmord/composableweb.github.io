@@ -7,10 +7,11 @@ export type MarkdownPageProps<T = MarkdownFrontmatter> = {
 export type MarkdownFileData<T = MarkdownFrontmatter> = {
   frontmatter: T;
   markdownBody: string;
+  markdownObject: { compiledSource: unknown; renderedOutput: string; scope: Record<string, unknown> };
 };
 export type MarkdownFileProps<T = MarkdownFrontmatter> = {
   fileRelativePath: string;
   data: MarkdownFileData<T>;
 };
 
-export type MarkdownFrontmatter = Record<string, string | string[] | number | number[]>;
+export type MarkdownFrontmatter = Record<string, string | string[] | number | number[] | boolean>;

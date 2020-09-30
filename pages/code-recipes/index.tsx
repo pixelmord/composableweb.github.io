@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import PageLayout from '~components/PageLayout';
 import { GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import { Text } from '@chakra-ui/core';
@@ -54,7 +53,7 @@ const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({ posts }: Recipe
               [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
             ]}
           />
-          <Text sx={{ textAlign: 'center' }}>Constant procrastination led to an empty page</Text>
+          <Text css={{ textAlign: 'center' }}>Constant procrastination led to an empty page</Text>
         </>
       )}
       {!!filteredPosts.length &&

@@ -28,7 +28,7 @@ const Recipe = ({ file, preview }: InferGetStaticPropsType<typeof getStaticProps
   const router = useRouter();
 
   const formConfig = {
-    label: 'Recipe',
+    label: 'Post',
     fields: [
       {
         name: 'frontmatter.title',

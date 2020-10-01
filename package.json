@@ -83,7 +83,8 @@
     "slugify": "^1.4.5",
     "styled-components": "^5.2.0",
     "three": "^0.120.1",
-    "tinacms": "^0.29.0"
+    "tinacms": "^0.29.0",
+    "zod": "^1.11.9"
   },
   "resolutions": {
     "@mdx-js/react": "1.6.16"

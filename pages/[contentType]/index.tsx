@@ -11,6 +11,7 @@ import { PostFrontmatter } from '~lib/contentTypes';
 import { MarkdownFileProps } from '~lib/propTypes';
 import { slugFromFilepath } from '~lib/slugHelpers';
 import ThreeDixelDrawing from '~components/ThreeDixelDrawing';
+import ArticleLayout from '~components/ArticleLayout';
 
 const url = 'https://composableweb.com/blog';
 const title = 'Blog – ComposableWeb - Andreas Adam (@pixelmord)';
@@ -33,7 +34,7 @@ const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({
       (a, b) => Number(new Date(b.data.frontmatter.publishedAt)) - Number(new Date(a.data.frontmatter.publishedAt))
     );
   return (
-    <>
+    <ArticleLayout>
       <NextSeo
         title={title}
         description={description}
@@ -70,7 +71,7 @@ const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({
             {post.data.frontmatter.title}
           </NextLink>
         ))}
-    </>
+    </ArticleLayout>
   );
 };
 export default RecipeOverviewPage;

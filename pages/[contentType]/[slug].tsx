@@ -19,8 +19,7 @@ import { slugFromFilepath } from 'lib/slugHelpers';
 import { MarkdownPageProps, MarkdownFileData } from '~lib/propTypes';
 import Layout from '~components/ArticleLayout';
 import OpenAuthoringInlineForm from '~components/OpenAuthoringInlineForm';
-import { Heading } from '@chakra-ui/core';
-import TinaEditLink from '~components/TinaEditLink';
+import Heading from '~components/Heading';
 
 import { mdxHydrateMarkdown } from '~lib/client/utils';
 
@@ -55,7 +54,6 @@ const Recipe = ({ file, preview }: InferGetStaticPropsType<typeof getStaticProps
   const markdown = mdxHydrateMarkdown(file.data.markdownObject, { scope: frontmatter });
   return (
     <OpenAuthoringInlineForm form={form} path={file.fileRelativePath} preview={preview}>
-      <TinaEditLink />
       <Layout>
         {router.isFallback ? (
           <div>Loading…</div>

@@ -57,7 +57,7 @@ export default class Site extends App {
             <Global
               styles={css`
                 #__next {
-                  height: 100%;
+                  min-height: 100vh;
                 }
               `}
             />

@@ -9,7 +9,7 @@ export default {
   },
   fontWeights: {
     ...theme.fontWeights,
-    bold: 600,
+    bold: 700,
     heading: 500,
   },
   landingPage: {

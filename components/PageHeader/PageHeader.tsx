@@ -1,19 +1,14 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { Box, Flex, BoxProps } from '@chakra-ui/core';
+import { Flex, FlexProps } from '@chakra-ui/core';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 
-export const PageHeader: React.FC<BoxProps> = ({ children, ...rest }: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (
-  <Box
-    as="header"
-    css={{
-      background: 'rgba(0, 134, 151, 0.55)',
-    }}
-    {...rest}
-  >
-    <Box py={[3, 3, 4]}>
-      <Flex css={{ justifyContent: 'space-between', alignItems: 'center' }}>{children}</Flex>
-    </Box>
-  </Box>
+export const PageHeader: React.FC<FlexProps> = ({
+  children,
+  ...rest
+}: PropsWithoutRef<PropsWithChildren<FlexProps>>) => (
+  <Flex as="header" flexDirection="column" backgroundColor="rgba(0, 134, 151, 0.55)" {...rest}>
+    {children}
+  </Flex>
 );
 export default PageHeader;

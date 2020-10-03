@@ -1,8 +1,8 @@
 {
   "basics": {
-    "name": "John Doe",
+    "name": "Andreas Adam",
     "label": "Programmer",
-    "picture": "",
+    "picture": "/static/images/andreas-adam.jpg",
     "email": "john@gmail.com",
     "phone": "(912) 555-4321",
     "website": "http://johndoe.com",

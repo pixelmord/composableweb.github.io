@@ -3,22 +3,32 @@
     "name": "Andreas Adam",
     "label": "Programmer",
     "picture": "/static/images/andreas-adam.jpg",
-    "email": "john@gmail.com",
-    "phone": "(912) 555-4321",
-    "website": "http://johndoe.com",
+    "email": "andreas.adam@composableweb.com",
+    "phone": "+49 (179) 709 5114",
+    "website": "https://composableweb.com",
     "summary": "A summary of John Doe...",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "Rümannstraße 94",
+      "postalCode": "80804",
+      "city": "München",
+      "countryCode": "DE",
+      "region": "Bayern"
     },
     "profiles": [
       {
         "network": "Twitter",
-        "username": "john",
-        "url": "http://twitter.com/john"
+        "username": "pixelmord",
+        "url": "http://twitter.com/pixelmord"
+      },
+      {
+        "network": "Github",
+        "username": "pixelmord",
+        "url": "http://github.com/pixelmord"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "Andreas Adam",
+        "url": "http://www.linkedin.com/in/andreassahle"
       }
     ]
   },

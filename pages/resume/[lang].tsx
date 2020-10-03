@@ -4,11 +4,11 @@ import { jsx } from '@emotion/core';
 import { usePlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github';
-import { InlineText } from 'react-tinacms-inline';
+import { InlineImage, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import { ResumeData } from 'lib/contentTypes';
-import { Box, Grid, Stack } from '@chakra-ui/core';
+import { Avatar, Box, Flex, Grid, Icon, Link, Stack, Text } from '@chakra-ui/core';
 
 import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import OpenAuthoringInlineForm from '~components/OpenAuthoringInlineForm';
@@ -24,8 +24,30 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
   const formOptions = {
     label: 'Resume',
     fields: [
-      { name: 'basics.name', component: 'text' },
-      { name: 'basics.title', component: 'text' },
+      {
+        label: 'Basics',
+        name: 'basics',
+        component: 'group',
+        fields: [
+          { name: 'name', component: 'text', label: 'Name' },
+          { name: 'label', component: 'text', label: 'Job Title' },
+          { name: 'email', component: 'text', label: 'Email' },
+          { name: 'phone', component: 'text', label: 'Phone' },
+          { name: 'website', component: 'text', label: 'Website' },
+          { name: 'summary', component: 'textarea', label: 'Summary' },
+          {
+            name: 'picture',
+            component: 'image',
+            label: 'Photo',
+            uploadDir: () => {
+              return '/static/images/';
+            },
+
+            parse: (filename) => `/static/images/${filename}`,
+            previewSrc: (formValues) => `${formValues.basics.picture}`,
+          },
+        ],
+      },
     ],
   };
   const [data, form] = useGithubJsonForm(file as GitFile<ResumeData>, formOptions);
@@ -35,21 +57,59 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
     <OpenAuthoringInlineForm form={form} path={file.fileRelativePath} preview={preview}>
       <ArticleLayout>
         <Grid backgroundColor="white" templateColumns="2.5fr 1fr" maxWidth="1100px" mx="auto">
-          <Box>
+          <Box p={10}>
             <Heading as="h2" size="lg">
-              <InlineText name="basics.name" />
+              Profile
             </Heading>
+
+            <InlineTextarea name="basics.summary" />
           </Box>
-          <Box backgroundColor="teal.700">
-            <Stack backgroundColor="teal.500">
-              <Heading as="h2" size="lg">
+          <Box backgroundColor="gray.300">
+            <Stack backgroundColor="gray.500" textAlign="center" p={10}>
+              <InlineImage
+                name="basics.picture"
+                parse={(filename) => (filename ? `/static/images/${filename}` : null)}
+                uploadDir={() => '/static/images/'}
+                previewSrc={(formValues) => formValues.basics.picture}
+              >
+                {(props) => (
+                  <Avatar
+                    size="xl"
+                    w={['48px', '48px', '48px', '130px']}
+                    h={['48px', '48px', '48px', '130px']}
+                    name="Andreas Adam"
+                    mx="auto"
+                    src={props?.previewSrc || data.basics.picture}
+                  />
+                )}
+              </InlineImage>
+              <Heading as="h2" size="xl">
                 <InlineText name="basics.name" />
+              </Heading>
+              <Heading as="h3" size="md">
+                <InlineText name="basics.label" />
               </Heading>
             </Stack>
-            <Stack>
-              <Heading as="h2" size="lg">
-                <InlineText name="basics.name" />
-              </Heading>
+
+            <Stack px={5} py={5} gridGap={1}>
+              <Flex fontSize="md" alignItems="center">
+                <Icon name="email" mr={2} size="14px" color="cyan.900" />
+                <Link href={`mailto:${data.basics.email}`}>
+                  <InlineText name="basics.email" />
+                </Link>
+              </Flex>
+              <Flex fontSize="md" alignItems="center">
+                <Icon name="phone" mr={2} size="14px" color="cyan.900" />
+                <Link href={`tel:${data.basics.phone}`}>
+                  <InlineText name="basics.phone" />
+                </Link>
+              </Flex>
+              <Flex fontSize="md" alignItems="center">
+                <Icon name="link" mr={2} size="14px" color="cyan.900" />
+                <Link href={data.basics.website}>
+                  <InlineText name="basics.website" />
+                </Link>
+              </Flex>
             </Stack>
           </Box>
         </Grid>

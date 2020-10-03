@@ -13,6 +13,7 @@ export const PageHeaderBranding: React.FC<StackProps> = (props: PropsWithoutRef<
     flexDirection={['row', 'row', 'row', 'column']}
     spacing={[0, 0, 0, 4]}
     alignItems={['center']}
+    mt={{ base: 0, lg: 20 }}
     h={'60px'}
   >
     <Avatar
@@ -22,11 +23,18 @@ export const PageHeaderBranding: React.FC<StackProps> = (props: PropsWithoutRef<
       name="Andreas Adam"
       src="/static/favicons/android-chrome-192x192.png"
       mr={[2, 4, 4, 0]}
+      opacity={0.75}
     />
-    <Heading my={0} size="lg">
+    <Heading
+      as="h2"
+      my={{ base: 0, lg: 3 }}
+      fontSize={{ base: 'xl', lg: '3xl' }}
+      fontFamily="heading"
+      fontWeight="heading"
+    >
       <NextLink href="/">{config.common.title}</NextLink>
     </Heading>
-    <Heading as="h3" my={0} fontSize={{ base: 'md', lg: 'xl' }} display={['none', 'none', 'none', 'block']}>
+    <Heading as="h3" my={0} fontSize={{ base: 'md', lg: 'xl' }} display={{ base: 'none', lg: 'block' }}>
       {config.common.tagline}
     </Heading>
   </Stack>

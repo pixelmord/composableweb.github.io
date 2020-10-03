@@ -25,7 +25,7 @@ export const NextNavLink: React.FC<NextNavLinkProps> = ({
       passHref={passHref}
       prefetch={prefetch}
     >
-      <Link {...rest} textDecoration="none" mr="2" />
+      <Link {...rest} textDecoration="none" mr="2" display="block" />
     </NLink>
   );
 };

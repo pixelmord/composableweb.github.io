@@ -19,8 +19,9 @@ export const MainNavigation: React.FC<BoxProps> = (props: PropsWithoutRef<PropsW
         display={{ lg: 'none' }}
         variant="ghost"
       />
-      <Box display={{ base: `${isOpen ? 'block' : 'none'}`, lg: 'block' }}>
+      <Box display={{ base: `${isOpen ? 'block' : 'none'}`, lg: 'block' }} py={5}>
         <NavLink href="/blog">Blog</NavLink>
+        <NavLink href="/code-recipes">Code Recipes</NavLink>
       </Box>
     </Box>
   );

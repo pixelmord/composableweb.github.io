@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Head from 'next/head';
 import GoogleFonts from 'next-google-fonts';
 import { Global, css } from '@emotion/core';
@@ -7,6 +7,8 @@ import { DefaultSeo } from 'next-seo';
 import App, { AppProps } from 'next/app';
 import { TinaCMS, TinaProvider } from 'tinacms';
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
+import * as ackeeTracker from 'ackee-tracker';
+import Router from 'next/router';
 
 import config from '../config';
 import theme from '../styles';
@@ -43,7 +45,25 @@ export default class Site extends App {
     });
   }
 
-  render(): React.ReactElement {
+  componentDidMount() {
+    if (typeof window !== 'undefined') {
+      const ackeeTrackerInstance = ackeeTracker.create(
+        {
+          server: process.env.NEXT_PUBLIC_ACKEE_URL,
+          domainId: process.env.NEXT_PUBLIC_ACKEE_ID,
+        },
+        {
+          ignoreLocalhost: true,
+          detailed: true,
+        }
+      );
+      ackeeTrackerInstance.record();
+
+      Router.events.on('routeChangeComplete', ackeeTrackerInstance.record());
+    }
+  }
+
+  render() {
     const { Component, pageProps } = this.props;
     return (
       <>

@@ -69,6 +69,7 @@
     "next-tinacms-github": "^0.29.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-feather": "^2.0.8",
     "react-three-fiber": "^4.2.21",
     "react-tinacms-editor": "^0.30.0",
     "react-tinacms-github": "^0.30.0",

@@ -6,19 +6,27 @@ import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github';
 import { InlineImage, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { Avatar, Box, Divider, Flex, Grid, Link, Stack, Text } from '@chakra-ui/core';
+import { Phone, Mail, Link as FeatherLink, Linkedin, Twitter, GitHub } from 'react-feather';
 
 import { ResumeData } from 'lib/contentTypes';
-import { Avatar, Box, Flex, Grid, Icon, Link, Stack, Text } from '@chakra-ui/core';
 
 import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import OpenAuthoringInlineForm from '~components/OpenAuthoringInlineForm';
 import ArticleLayout from '~components/ArticleLayout';
 import Heading from '~components/Heading';
+
 export type ResumePageProps = {
   file: {
     data: ResumeData;
     fileRelativePath: string;
   };
+};
+
+const socialIcons = {
+  Twitter,
+  GitHub,
+  LinkedIn: Linkedin,
 };
 const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
   const formOptions = {
@@ -56,7 +64,7 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
   return (
     <OpenAuthoringInlineForm form={form} path={file.fileRelativePath} preview={preview}>
       <ArticleLayout>
-        <Grid backgroundColor="white" templateColumns="2.5fr 1fr" maxWidth="1100px" mx="auto">
+        <Grid backgroundColor="white" templateColumns="2.5fr 1fr" maxWidth="1100px" mx="auto" boxShadow="lg">
           <Box p={10}>
             <Heading as="h2" size="lg">
               Profile
@@ -93,23 +101,31 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
 
             <Stack px={5} py={5} gridGap={1}>
               <Flex fontSize="md" alignItems="center">
-                <Icon name="email" mr={2} size="14px" color="cyan.900" />
+                <Box as={Mail} mr={2} size="16px" color="cyan.900" />
                 <Link href={`mailto:${data.basics.email}`}>
                   <InlineText name="basics.email" />
                 </Link>
               </Flex>
               <Flex fontSize="md" alignItems="center">
-                <Icon name="phone" mr={2} size="14px" color="cyan.900" />
+                <Box as={Phone} mr={2} size="16px" color="cyan.900" />
                 <Link href={`tel:${data.basics.phone}`}>
                   <InlineText name="basics.phone" />
                 </Link>
               </Flex>
               <Flex fontSize="md" alignItems="center">
-                <Icon name="link" mr={2} size="14px" color="cyan.900" />
+                <Box as={FeatherLink} mr={2} size="16px" color="cyan.900" />
                 <Link href={data.basics.website}>
                   <InlineText name="basics.website" />
                 </Link>
               </Flex>
+              <Divider />
+              {data.basics.profiles.length &&
+                data.basics.profiles.map((profile) => (
+                  <Flex key={profile.url} fontSize="md" alignItems="center">
+                    <Box as={socialIcons[profile.network]} mr={2} size="16px" color="cyan.900" />
+                    <Link href={profile.url}>{profile.username}</Link>
+                  </Flex>
+                ))}
             </Stack>
           </Box>
         </Grid>

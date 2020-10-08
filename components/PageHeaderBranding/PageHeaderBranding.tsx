@@ -11,6 +11,7 @@ export const PageHeaderBranding: React.FC<StackProps> = (props: PropsWithoutRef<
   <Stack
     {...props}
     flexDirection={['row', 'row', 'row', 'column']}
+    textAlign={{ lg: 'center' }}
     spacing={[0, 0, 0, 4]}
     alignItems={['center']}
     mt={{ base: 0, lg: 20 }}

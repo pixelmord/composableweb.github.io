@@ -6,7 +6,7 @@ import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github';
 import { InlineImage, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { Avatar, Box, Divider, Flex, Grid, Link, Stack, Text } from '@chakra-ui/core';
+import { Avatar, Box, Divider, Flex, Grid, Link, Stack } from '@chakra-ui/core';
 import { Phone, Mail, Link as FeatherLink, Linkedin, Twitter, GitHub } from 'react-feather';
 
 import { ResumeData } from 'lib/contentTypes';
@@ -21,6 +21,7 @@ export type ResumePageProps = {
     data: ResumeData;
     fileRelativePath: string;
   };
+  preview: boolean;
 };
 
 const socialIcons = {

@@ -6,7 +6,7 @@ import { PropsWithoutRef, PropsWithChildren } from 'react';
 import { NextNavLink as NavLink } from '../NextNavLink';
 
 export const MainNavigation: React.FC<BoxProps> = (props: PropsWithoutRef<PropsWithChildren<BoxProps>>) => {
-  const { isOpen, onOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle } = useDisclosure();
   return (
     <Box {...props} as="nav" position="relative">
       <IconButton

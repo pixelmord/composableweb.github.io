@@ -4,8 +4,11 @@
 import { jsx } from '@emotion/core';
 import { Box, Callout, Code, HeadingProps, Kbd, Link, Text, Divider, useColorMode } from '@chakra-ui/core';
 import { PropsWithChildren } from 'react';
-import Heading from '~components/Heading';
 import NextLink from 'next/link';
+import { ThemeProvider } from '@chakra-ui/core';
+
+import theme from '../../styles';
+import Heading from '~components/Heading';
 
 const Table = (props) => (
   <Box overflowX="scroll" w="full">
@@ -113,21 +116,57 @@ const Hr = () => {
 };
 
 export const MDXComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
-  h2: (props: PropsWithChildren<{ id?: string }>): React.ReactElement => <AnchorHeading as="h2" size="lg" {...props} />,
-  h3: (props: PropsWithChildren<{ id?: string }>): React.ReactElement => <AnchorHeading as="h3" size="md" {...props} />,
-  inlineCode: (props) => <Code variantColor="yellow" fontSize="0.84em" {...props} />,
+  h1: (props) => (
+    <ThemeProvider theme={theme}>
+      <Heading as="h1" size="xl" my={4} {...props} />
+    </ThemeProvider>
+  ),
+  h2: (props: PropsWithChildren<{ id?: string }>): React.ReactElement => (
+    <ThemeProvider theme={theme}>
+      <AnchorHeading as="h2" size="lg" {...props} />
+    </ThemeProvider>
+  ),
+  h3: (props: PropsWithChildren<{ id?: string }>): React.ReactElement => (
+    <ThemeProvider theme={theme}>
+      <AnchorHeading as="h3" size="md" {...props} />
+    </ThemeProvider>
+  ),
+  inlineCode: (props) => (
+    <ThemeProvider theme={theme}>
+      <Code variantColor="yellow" fontSize="0.84em" {...props} />
+    </ThemeProvider>
+  ),
   kbd: Kbd,
-  br: (props) => <Box as="br" height="24px" {...props} />,
+  br: (props) => (
+    <ThemeProvider theme={theme}>
+      <Box as="br" height="24px" {...props} />
+    </ThemeProvider>
+  ),
   hr: Hr,
   table: Table,
   th: THead,
   td: TData,
   a: CustomLink,
-  p: (props) => <Text as="p" mt={2} lineHeight="tall" {...props} />,
-  ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
-  ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
-  li: (props) => <Box as="li" pb={1} {...props} />,
+  p: (props) => (
+    <ThemeProvider theme={theme}>
+      <Text as="p" mt={2} lineHeight="tall" {...props} />
+    </ThemeProvider>
+  ),
+  ul: (props) => (
+    <ThemeProvider theme={theme}>
+      <Box as="ul" pt={2} pl={4} ml={2} {...props} />
+    </ThemeProvider>
+  ),
+  ol: (props) => (
+    <ThemeProvider theme={theme}>
+      <Box as="ol" pt={2} pl={4} ml={2} {...props} />
+    </ThemeProvider>
+  ),
+  li: (props) => (
+    <ThemeProvider theme={theme}>
+      <Box as="li" pb={1} {...props} />
+    </ThemeProvider>
+  ),
   blockquote: Quote,
 };
 export default MDXComponents;

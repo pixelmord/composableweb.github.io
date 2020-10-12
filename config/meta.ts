@@ -10,7 +10,7 @@ export default {
         url: 'https://composableweb.com/static/images/banner.png',
         width: 1200,
         height: 630,
-        alt: `${common.title} | ${common.shortDescription}`,
+        alt: `${common.title} | ${common.tagline}`,
       },
     ],
     site_name: 'ComposableWEB',

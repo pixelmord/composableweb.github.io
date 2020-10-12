@@ -1,8 +1,6 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
 import { Box, BoxProps, IconButton, useDisclosure } from '@chakra-ui/core';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
-
+import { FiMenu } from 'react-icons/fi';
 import { NextNavLink as NavLink } from '../NextNavLink';
 
 export const MainNavigation: React.FC<BoxProps> = (props: PropsWithoutRef<PropsWithChildren<BoxProps>>) => {
@@ -10,7 +8,7 @@ export const MainNavigation: React.FC<BoxProps> = (props: PropsWithoutRef<PropsW
   return (
     <Box {...props} as="nav" position="relative">
       <IconButton
-        icon="view"
+        icon={<FiMenu />}
         aria-label="Show Navigation"
         position="absolute"
         bottom="calc(100% + 10px)"

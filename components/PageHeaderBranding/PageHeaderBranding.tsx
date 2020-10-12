@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
 import { Avatar, Stack, StackProps } from '@chakra-ui/core';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 

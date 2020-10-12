@@ -1,14 +1,12 @@
-import { theme } from '@chakra-ui/core';
+import { extendTheme } from '@chakra-ui/core';
 
-export default {
-  ...theme,
+export default extendTheme({
   fonts: {
     heading: `'Archivo Narrow', sans-serif`,
     body: `'Barlow', sans-serif`,
     mono: `Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace`,
   },
   fontWeights: {
-    ...theme.fontWeights,
     bold: 700,
     heading: 500,
   },
@@ -59,4 +57,4 @@ export default {
       lineHeight: 'calc(8px + 2ex)',
     },
   },
-};
+});

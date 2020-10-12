@@ -50,7 +50,7 @@
     ]
   },
   "dependencies": {
-    "@chakra-ui/core": "^0.8.0",
+    "@chakra-ui/core": "^1.0.0-rc.5",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "ackee-tracker": "^4.0.2",
@@ -70,7 +70,7 @@
     "next-tinacms-github": "^0.29.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-feather": "^2.0.8",
+    "react-icons": "^3.11.0",
     "react-three-fiber": "^4.2.21",
     "react-tinacms-editor": "^0.30.0",
     "react-tinacms-github": "^0.30.0",

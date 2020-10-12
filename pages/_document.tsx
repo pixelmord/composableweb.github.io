@@ -1,5 +1,6 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ColorModeScript } from '@chakra-ui/core';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -21,6 +22,7 @@ class MyDocument extends Document {
           <link color="#4a9885" href="/static/favicons/safari-pinned-tab.svg" rel="mask-icon" />
         </Head>
         <body>
+          <ColorModeScript initialColorMode="light" />
           <Main />
           <NextScript />
         </body>

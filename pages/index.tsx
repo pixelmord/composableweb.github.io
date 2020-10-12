@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
 import { Text, Box } from '@chakra-ui/core';
 import { NextPage } from 'next';
 import PageSection from '~components/PageSection';

@@ -1,13 +1,10 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
-
 import { usePlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github';
 import { InlineImage, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { Avatar, Box, Divider, Flex, Grid, Link, Stack } from '@chakra-ui/core';
-import { Phone, Mail, Link as FeatherLink, Linkedin, Twitter, GitHub } from 'react-feather';
+import { FiPhone, FiMail, FiLink, FiLinkedin, FiTwitter, FiGithub } from 'react-icons/fi';
 
 import { ResumeData } from 'lib/contentTypes';
 
@@ -25,9 +22,9 @@ export type ResumePageProps = {
 };
 
 const socialIcons = {
-  Twitter,
-  GitHub,
-  LinkedIn: Linkedin,
+  Twitter: FiTwitter,
+  GitHub: FiGithub,
+  LinkedIn: FiLinkedin,
 };
 const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
   const formOptions = {
@@ -102,19 +99,19 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
 
             <Stack px={5} py={5} gridGap={1}>
               <Flex fontSize="md" alignItems="center">
-                <Box as={Mail} mr={2} size="16px" color="cyan.900" />
+                <Box as={FiMail} mr={2} w="16px" h="16px" color="cyan.900" />
                 <Link href={`mailto:${data.basics.email}`}>
                   <InlineText name="basics.email" />
                 </Link>
               </Flex>
               <Flex fontSize="md" alignItems="center">
-                <Box as={Phone} mr={2} size="16px" color="cyan.900" />
+                <Box as={FiPhone} mr={2} w="16px" h="16px" color="cyan.900" />
                 <Link href={`tel:${data.basics.phone}`}>
                   <InlineText name="basics.phone" />
                 </Link>
               </Flex>
               <Flex fontSize="md" alignItems="center">
-                <Box as={FeatherLink} mr={2} size="16px" color="cyan.900" />
+                <Box as={FiLink} mr={2} w="16px" h="16px" color="cyan.900" />
                 <Link href={data.basics.website}>
                   <InlineText name="basics.website" />
                 </Link>
@@ -123,7 +120,7 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
               {data.basics.profiles.length &&
                 data.basics.profiles.map((profile) => (
                   <Flex key={profile.url} fontSize="md" alignItems="center">
-                    <Box as={socialIcons[profile.network]} mr={2} size="16px" color="cyan.900" />
+                    <Box as={socialIcons[profile.network]} mr={2} w="16px" h="16px" color="cyan.900" />
                     <Link href={profile.url}>{profile.username}</Link>
                   </Flex>
                 ))}

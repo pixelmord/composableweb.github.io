@@ -1,5 +1,5 @@
 ### MDXComponents
 
 ```js
-  <MDXComponents />
+<MDXComponents />
 ```

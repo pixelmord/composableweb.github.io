@@ -1,5 +1,5 @@
 ### ThreeDixelDrawing
 
 ```js
-  <ThreeDixelDrawing />
+<ThreeDixelDrawing />
 ```

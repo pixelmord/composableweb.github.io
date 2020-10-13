@@ -1,5 +1,5 @@
 ### ArticleLayout
 
 ```js
-  <ArticleLayout />
+<ArticleLayout />
 ```

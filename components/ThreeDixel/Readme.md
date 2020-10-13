@@ -1,5 +1,5 @@
 ### ThreeDixel
 
 ```js
-  <ThreeDixel />
+<ThreeDixel />
 ```

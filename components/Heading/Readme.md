@@ -1,5 +1,5 @@
 ### Heading
 
 ```js
-  <Heading />
+<Heading />
 ```

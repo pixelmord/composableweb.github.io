@@ -1,5 +1,5 @@
 ### TinaEditLink
 
 ```js
-  <TinaEditLink />
+<TinaEditLink />
 ```

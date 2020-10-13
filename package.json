@@ -8,7 +8,10 @@
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext ts --ext tsx --ext js"
   },
   "husky": {
     "hooks": {
@@ -18,7 +21,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix",
+      "yarn lint --fix",
       "git add"
     ]
   },
@@ -72,6 +75,7 @@
     "react-tinacms-editor": "^0.30.0",
     "react-tinacms-github": "^0.30.0",
     "react-tinacms-inline": "^0.29.0",
+    "react-use": "^15.3.4",
     "reading-time": "^1.2.0",
     "rehype": "^11.0.0",
     "remark-autolink-headings": "^6.0.1",

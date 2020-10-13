@@ -28,7 +28,7 @@ const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({
 }: RecipeOverviewpageProps) => {
   const { asPath } = useRouter();
   const url = `${config.common.url}${asPath}`;
-  const title = `${titelize(contentType)} | ${config.common.title}`;
+  const title = contentType ? `${titelize(contentType)} | ${config.common.title}` : config.common.title;
   const filteredPosts = posts
     .filter((post) => !post.data.frontmatter.draft)
     .sort(

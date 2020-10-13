@@ -5,7 +5,7 @@ import { prismTheme } from './prism';
 
 const theme: Styles = extendTheme({
   config: {
-    useSystemColorMode: true,
+    useSystemColorMode: false,
     initialColorMode: 'light',
   },
   colors: { primary: 'teal.600' },

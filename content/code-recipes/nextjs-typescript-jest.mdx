@@ -9,7 +9,7 @@ draft: false
 ## Install
 
 ```bash
-yarn add -D @testing-library/jest-dom @testing-library/react ts-jest jest
+yarn add -D @testing-library/react babel-jest jest jest-watch-typeahead
 ```
 
 ## Configure
@@ -18,40 +18,34 @@ Create `./jest.config.js` as follows:
 
 ```js:jest.config.js
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  globals: {
-    // we must specify a custom tsconfig for tests because we need the typescript transform
-    // to transform jsx into js rather than leaving it jsx such as the next build requires.  you
-    // can see this setting in tsconfig.jest.json -> "jsx": "react"
-    'ts-jest': {
-      tsConfig: 'tsconfig.jest.json',
-    },
+  roots: ['<rootDir>'],
+  moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
+  testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
+  transform: {
+    '^.+\\.(ts|tsx)$': 'babel-jest',
   },
+  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+    // replicate path mappings as in tsconfig.json
+    '^~lib/(.*)$': '<rootDir>/lib/$1',
+    '^~components/(.*)$': '<rootDir>/components/$1',
+  },
+  // required setup files, mocks
+  setupFiles: ['<rootDir>/test/__mocks__/matchMediaMock.js'],
 };
-```
-
-Create `./tsconfig.jest.js` as follows:
-
-```json:tsconfig.jest.js
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "jsx": "react"
-  }
-}
 ```
 
 ## Utility in case any context providers are needed for rendering
 
-Create `./test/test-utils.tsx` as follows (e.g. for ThemeProvider etc.):
+Create `./test/testUtils.tsx` as follows (e.g. for ThemeProvider etc.):
 
-```js:test-utils.tsx
+```js:testUtils.tsx
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
-
-import '@testing-library/jest-dom';
 
 const ChakraRenderer: React.FC = ({ children }: React.PropsWithChildren<Record<string, any>>) => {
   return <ThemeProvider>{children}</ThemeProvider>;
@@ -70,5 +64,5 @@ export { customRender as render };
 In the test spec files import the utilities from react-testing-library via the above module, especially render function:
 
 ```js:MyComponent.spec.ts
-import { render } from '../test/test-utils';
+import { render } from '../test/testUtils';
 ```

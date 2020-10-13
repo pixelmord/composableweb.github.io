@@ -4,6 +4,10 @@ import { mode, Styles } from '@chakra-ui/theme-tools';
 import { prismTheme } from './prism';
 
 const theme: Styles = extendTheme({
+  config: {
+    useSystemColorMode: true,
+    initialColorMode: 'light',
+  },
   colors: { primary: 'teal.600' },
   fonts: {
     heading: `'Archivo Narrow', sans-serif`,

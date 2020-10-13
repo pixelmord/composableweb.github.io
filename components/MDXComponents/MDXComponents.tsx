@@ -1,10 +1,10 @@
 /* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
-import { Box, Callout, Code, HeadingProps, Kbd, Link, Text, Divider, useColorMode } from '@chakra-ui/core';
+import { Box, Alert, Code, HeadingProps, Kbd, Link, Text, Divider, useColorMode } from '@chakra-ui/core';
 import { PropsWithChildren } from 'react';
 import NextLink from 'next/link';
-import { ThemeProvider } from '@chakra-ui/core';
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
 
 import theme from '../../styles';
 import Heading from '~components/Heading';
@@ -51,17 +51,10 @@ const CustomLink = (props) => {
 };
 
 const Quote = (props) => {
-  const { colorMode } = useColorMode();
-  const bgColor = {
-    light: 'blue.50',
-    dark: 'blue.900',
-  };
-
   return (
-    <Callout
+    <Alert
       mt={4}
       w="98%"
-      bg={bgColor[colorMode]}
       variant="left-accent"
       status="info"
       css={{

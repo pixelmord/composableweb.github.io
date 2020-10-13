@@ -96,7 +96,14 @@ const AnchorHeading: React.FC<HeadingProps> = ({
     >
       {children}
       {id && (
-        <Link aria-label="anchor" ml="0.375rem" color={color[colorMode]} css={{ opacity: 0 }} href={`#${id}`}>
+        <Link
+          aria-label="anchor"
+          ml="0.375rem"
+          color={color[colorMode]}
+          css={{ opacity: 0 }}
+          href={`#${id}`}
+          _hover={{ textDecoration: 'none' }}
+        >
           #
         </Link>
       )}

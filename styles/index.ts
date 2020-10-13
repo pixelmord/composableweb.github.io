@@ -1,6 +1,8 @@
 import { extendTheme } from '@chakra-ui/core';
 import { mode, Styles } from '@chakra-ui/theme-tools';
 
+import { prismTheme } from './prism';
+
 const theme: Styles = extendTheme({
   colors: { primary: 'teal.600' },
   fonts: {
@@ -74,6 +76,10 @@ const theme: Styles = extendTheme({
       hr: {
         borderColor: mode('gray.700', 'whiteAlpha.900')(props),
       },
+      pre: {
+        overflowX: 'auto',
+      },
+      ...prismTheme(props),
     }),
   },
 });

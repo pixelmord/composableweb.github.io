@@ -22,7 +22,7 @@ export const MainNavigation: React.FC<BoxProps> = (props: PropsWithoutRef<PropsW
       />
       <Box display={{ base: `${isOpen ? 'block' : 'none'}`, lg: 'block' }} pt={5} pb={8}>
         <NavLink href="/blog" color={asPath.startsWith('/blog') ? 'pink.800' : 'gray.700'}>
-          Blog
+          Writing
         </NavLink>
         <Divider my={2} borderColor="teal.600" />
         <NavLink href="/code-recipes" color={asPath.startsWith('/code-recipes') ? 'pink.800' : 'gray.700'}>

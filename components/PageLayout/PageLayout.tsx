@@ -12,7 +12,7 @@ export const PageLayout: React.FC<FlexProps> = ({
   ...rest
 }: PropsWithoutRef<PropsWithChildren<FlexProps>>) => (
   <Flex {...rest} flexDirection={{ base: 'column', lg: 'row' }} minHeight="100vh">
-    <PageHeader w={{ base: '100%', lg: '350px', xl: '450px' }}>
+    <PageHeader w={{ base: '100%', lg: '350px', xl: '450px' }} flexShrink={0}>
       <PageHeaderBranding mx="auto" w={['90%', '90%', '80%']} />
       <MainNavigation mx="auto" w={['90%', '90%', '80%']} />
     </PageHeader>

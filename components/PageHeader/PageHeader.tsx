@@ -5,7 +5,7 @@ export const PageHeader: React.FC<FlexProps> = ({
   children,
   ...rest
 }: PropsWithoutRef<PropsWithChildren<FlexProps>>) => (
-  <Box as="header" backgroundColor="blue.300" position="relative" {...rest}>
+  <Box as="header" backgroundColor="blue.200" position="relative" {...rest}>
     <Flex
       flexDirection="column"
       justifyContent={['flex-start', 'flex-start', 'flex-start', 'space-between']}

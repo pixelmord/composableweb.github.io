@@ -7,6 +7,7 @@ import { DefaultSeo } from 'next-seo';
 import App, { AppProps } from 'next/app';
 import { TinaCMS, TinaProvider } from 'tinacms';
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
+import { NextGithubMediaStore } from 'next-tinacms-github';
 import * as ackeeTracker from 'ackee-tracker';
 import Router from 'next/router';
 
@@ -22,19 +23,22 @@ export default class Site extends App {
     /**
      * 1. Create the TinaCMS instance
      */
+    const githubClient = new GithubClient({
+      proxy: '/api/proxy-github',
+      authCallbackRoute: '/api/create-github-access-token',
+      clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
+      baseRepoFullName: process.env.NEXT_PUBLIC_REPO_FULL_NAME,
+      baseBranch: process.env.NEXT_PUBLIC_BASE_BRANCH,
+    });
+    const mediaStore = new NextGithubMediaStore(githubClient);
     this.cms = new TinaCMS({
       enabled: !!props.pageProps.preview,
       apis: {
         /**
          * 2. Register the GithubClient
          */
-        github: new GithubClient({
-          proxy: '/api/proxy-github',
-          authCallbackRoute: '/api/create-github-access-token',
-          clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
-          baseRepoFullName: process.env.NEXT_PUBLIC_REPO_FULL_NAME,
-          baseBranch: process.env.NEXT_PUBLIC_BASE_BRANCH,
-        }),
+        github: githubClient,
+        media: mediaStore,
       },
       /**
        * 3. Hide the Sidebar & Toolbar

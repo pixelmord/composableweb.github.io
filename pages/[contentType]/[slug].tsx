@@ -8,7 +8,7 @@ import { InlineText, InlineTextarea } from 'react-tinacms-inline';
 import fg from 'fast-glob';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { GithubPreviewProps } from 'next-tinacms-github';
-import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
+import { GitFile } from 'react-tinacms-github/dist/src/form/useGitFileSha';
 import { Text } from '@chakra-ui/core';
 
 import { getMarkdownProps } from '~lib/server/utils';

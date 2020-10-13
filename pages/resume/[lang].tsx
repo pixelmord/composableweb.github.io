@@ -9,7 +9,7 @@ import { FiPhone, FiMail, FiLink, FiLinkedin, FiTwitter, FiGithub } from 'react-
 import { useRouter } from 'next/router';
 
 import { ResumeData } from 'lib/contentTypes';
-import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
+import { GitFile } from 'react-tinacms-github/dist/src/form/useGitFileSha';
 import OpenAuthoringInlineForm from '~components/OpenAuthoringInlineForm';
 import ArticleLayout from '~components/ArticleLayout';
 import Heading from '~components/Heading';
@@ -55,7 +55,7 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
             },
 
             parse: (filename) => `/static/images/${filename}`,
-            previewSrc: (formValues) => `${formValues.basics.picture}`,
+            previewSrc: (formValues: ResumeData) => `${formValues.basics.picture}`,
           },
         ],
       },
@@ -97,7 +97,7 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
                 name="basics.picture"
                 parse={(filename) => (filename ? `/static/images/${filename}` : null)}
                 uploadDir={() => '/static/images/'}
-                previewSrc={(formValues) => formValues.basics.picture}
+                previewSrc={(_src, _path, formValues: ResumeData): string => formValues.basics.picture}
               >
                 {(props) => (
                   <Avatar
@@ -106,7 +106,7 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
                     h={['48px', '48px', '48px', '130px']}
                     name="Andreas Adam"
                     mx="auto"
-                    src={props?.previewSrc || data.basics.picture}
+                    src={props?.src || data.basics.picture}
                   />
                 )}
               </InlineImage>

@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
-import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
+
 import * as zod from 'zod';
+import { MarkdownFileProps } from './propTypes';
 export type PostFrontmatter = {
   title: string;
   createdAt: string;
@@ -21,7 +22,7 @@ export type PageData = {
 
 export type NextPageWithDataProps<T = PageData> = {
   preview: boolean;
-  file: GitFile<T>;
+  file: MarkdownFileProps<T>;
 };
 export type NextPageWithData = NextPage<NextPageWithDataProps>;
 

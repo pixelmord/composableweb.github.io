@@ -1,7 +1,7 @@
 ---
 title: 'Setup NextJS Testing with Jest, React-Testing-Library and Typescript'
 layout: 'code-recipe'
-publishedAt: '2020-09-06'
+publishedAt: '2020-10-13'
 createdAt: '2020-09-06'
 draft: false
 ---
@@ -16,7 +16,7 @@ yarn add -D @testing-library/jest-dom @testing-library/react ts-jest jest
 
 Create `./jest.config.js` as follows:
 
-```js
+```js:jest.config.js
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
@@ -33,32 +33,28 @@ module.exports = {
 
 Create `./tsconfig.jest.js` as follows:
 
-```js
+```json:tsconfig.jest.js
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "jsx": "react"
   }
 }
-
 ```
 
 ## Utility in case any context providers are needed for rendering
 
 Create `./test/test-utils.tsx` as follows (e.g. for ThemeProvider etc.):
 
-```js
+```js:test-utils.tsx
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ThemeProvider, ColorModeProvider } from '@chakra-ui/core';
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
+
 import '@testing-library/jest-dom';
 
 const ChakraRenderer: React.FC = ({ children }: React.PropsWithChildren<Record<string, any>>) => {
-  return (
-    <ThemeProvider>
-      <ColorModeProvider value="dark">{children}</ColorModeProvider>
-    </ThemeProvider>
-  );
+  return <ThemeProvider>{children}</ThemeProvider>;
 };
 
 const customRender = (ui, options = {}) =>
@@ -73,8 +69,6 @@ export { customRender as render };
 
 In the test spec files import the utilities from react-testing-library via the above module, especially render function:
 
-MyComponent.spec.ts:
-
-```js
+```js:MyComponent.spec.ts
 import { render } from '../test/test-utils';
 ```

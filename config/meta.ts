@@ -1,19 +1,24 @@
 import common from './common';
 
 export default {
+  title: common.title,
+  canonical: common.url,
+  description: common.tagline,
   openGraph: {
+    type: 'website',
+    locale: 'en_IE',
     url: common.url,
     title: common.title,
-    description: 'Advocating the Composable Web.',
+    description: common.tagline,
     images: [
       {
-        url: 'https://composableweb.com/static/images/banner.png',
-        width: 1200,
-        height: 630,
+        url: 'https://composableweb.com/static/images/andreas-adam.png',
+        width: 1080,
+        height: 1080,
         alt: `${common.title} | ${common.tagline}`,
       },
     ],
-    site_name: 'ComposableWEB',
+    site_name: common.title,
   },
   twitter: {
     handle: '@composable_web',

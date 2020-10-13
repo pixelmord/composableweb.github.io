@@ -11,6 +11,14 @@ export function slugify(str: string): string {
       .replace(/-+/g, '-')
   );
 }
+export function titelize(str: string): string {
+  const _titelizeWord = (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  return str
+    .trim()
+    .split(' ')
+    .map((word) => (word.indexOf('-') ? word.split('-').map(_titelizeWord).join('-') : _titelizeWord(word)))
+    .join(' ');
+}
 export function slugFromFilepath(path: string): string {
   const parts = path.split('/');
   return slugify(parts[parts.length - 1].split('.').slice(0, -1).join('.'));

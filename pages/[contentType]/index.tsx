@@ -2,17 +2,17 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 
 import { NextSeo } from 'next-seo';
 import { Text } from '@chakra-ui/core';
 import fg from 'fast-glob';
+import { useRouter } from 'next/router';
 
 import { fetchAllMarkdownDocs } from '~lib/server/utils';
 import NextLink from '~components/NextLink';
 import { PostFrontmatter } from '~lib/contentTypes';
 import { MarkdownFileProps } from '~lib/propTypes';
-import { slugFromFilepath } from '~lib/slugHelpers';
+import { slugFromFilepath, titelize } from '~lib/slugHelpers';
 import ThreeDixelDrawing from '~components/ThreeDixelDrawing';
 import ArticleLayout from '~components/ArticleLayout';
+import config from '../../config';
 
-const url = 'https://composableweb.com/blog';
-const title = 'Blog – ComposableWeb - Andreas Adam (@pixelmord)';
 const description =
   'Ideas and experiments in rapid prototyping, Front-End Development, technical leadership and enterprise architecture';
 
@@ -26,6 +26,9 @@ const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({
   posts = [],
   contentType,
 }: RecipeOverviewpageProps) => {
+  const { asPath } = useRouter();
+  const url = `${config.common.url}${asPath}`;
+  const title = `${titelize(contentType)} | ${config.common.title}`;
   const filteredPosts = posts
     .filter((post) => !post.data.frontmatter.draft)
     .sort(

@@ -1,17 +1,19 @@
 import { usePlugin } from 'tinacms';
+import { NextSeo } from 'next-seo';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github';
 import { InlineImage, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { Avatar, Box, Divider, Flex, Grid, Link, Stack } from '@chakra-ui/core';
 import { FiPhone, FiMail, FiLink, FiLinkedin, FiTwitter, FiGithub } from 'react-icons/fi';
+import { useRouter } from 'next/router';
 
 import { ResumeData } from 'lib/contentTypes';
-
 import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import OpenAuthoringInlineForm from '~components/OpenAuthoringInlineForm';
 import ArticleLayout from '~components/ArticleLayout';
 import Heading from '~components/Heading';
+import config from '../../config';
 
 export type ResumePageProps = {
   file: {
@@ -27,6 +29,9 @@ const socialIcons = {
   LinkedIn: FiLinkedin,
 };
 const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
+  const router = useRouter();
+  const url = `${config.common.url}${router.asPath}`;
+  const title = `About Me & Resume | ${config.common.title}`;
   const formOptions = {
     label: 'Resume',
     fields: [
@@ -61,8 +66,24 @@ const Resume: NextPage<ResumePageProps> = ({ file, preview }) => {
   useGithubToolbarPlugins();
   return (
     <OpenAuthoringInlineForm form={form} path={file.fileRelativePath} preview={preview}>
+      <NextSeo
+        title={title}
+        description={data.basics.summary}
+        canonical={url}
+        openGraph={{
+          url,
+          title,
+          description: data.basics.summary,
+        }}
+      />
       <ArticleLayout>
-        <Grid backgroundColor="white" templateColumns="2.5fr 1fr" maxWidth="1100px" mx="auto" boxShadow="lg">
+        <Grid
+          backgroundColor="white"
+          templateColumns={{ base: '1fr', lg: '2.5fr 1fr' }}
+          maxWidth="1100px"
+          mx="auto"
+          boxShadow="lg"
+        >
           <Box p={10}>
             <Heading as="h2" size="lg">
               Profile

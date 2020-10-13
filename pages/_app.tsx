@@ -70,6 +70,8 @@ export default class Site extends App {
         <GoogleFonts href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500&family=Barlow:wght@400;600&display=swap" />
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
+          <meta content="#E2E8F0" name="theme-color" />
+          <meta content="#E2E8F0" name="msapplication-TileColor" />
         </Head>
         <ThemeProvider theme={theme}>
           <DefaultSeo {...config.meta} />

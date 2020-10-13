@@ -16,6 +16,8 @@ const Doc = () => {
         <link href="/static/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
         <link href="/static/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
         <link color="#4a9885" href="/static/favicons/safari-pinned-tab.svg" rel="mask-icon" />
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="" />
+        <link href="/static/favicons/site.webmanifest" rel="manifest" />
       </Head>
       <body>
         <ColorModeScript initialColorMode="light" />

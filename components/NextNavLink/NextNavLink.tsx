@@ -23,7 +23,14 @@ export const NextNavLink: React.FC<NextNavLinkProps> = ({
       passHref={passHref}
       prefetch={prefetch}
     >
-      <Link {...rest} textDecoration="none" mr="2" display="block" />
+      <Link
+        {...rest}
+        _hover={{ textDecoration: 'none', color: 'pink.700' }}
+        mr="2"
+        display="block"
+        fontWeight="bold"
+        verticalAlign="center"
+      />
     </NLink>
   );
 };

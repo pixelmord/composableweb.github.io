@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
 import GoogleFonts from 'next-google-fonts';
-import { Global, css } from '@emotion/core';
+
 import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
 import { DefaultSeo } from 'next-seo';
 import App, { AppProps } from 'next/app';
@@ -72,13 +72,6 @@ export default class Site extends App {
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
         <ThemeProvider theme={theme}>
-          <Global
-            styles={css`
-              #__next {
-                min-height: 100vh;
-              }
-            `}
-          />
           <DefaultSeo {...config.meta} />
           <TinaProvider cms={this.cms}>
             <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>

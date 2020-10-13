@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Head from 'next/head';
 import GoogleFonts from 'next-google-fonts';
-import { Global, css } from '@emotion/core';
-import { ColorModeProvider, ThemeProvider, CSSReset } from '@chakra-ui/core';
+
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
 import { DefaultSeo } from 'next-seo';
 import App, { AppProps } from 'next/app';
 import { TinaCMS, TinaProvider } from 'tinacms';
@@ -72,24 +72,14 @@ export default class Site extends App {
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
         <ThemeProvider theme={theme}>
-          <ColorModeProvider value="light">
-            <CSSReset />
-            <Global
-              styles={css`
-                #__next {
-                  min-height: 100vh;
-                }
-              `}
-            />
-            <DefaultSeo {...config.meta} />
-            <TinaProvider cms={this.cms}>
-              <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
-                <PageLayout>
-                  <Component {...pageProps} />
-                </PageLayout>
-              </TinacmsGithubProvider>
-            </TinaProvider>
-          </ColorModeProvider>
+          <DefaultSeo {...config.meta} />
+          <TinaProvider cms={this.cms}>
+            <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
+              <PageLayout>
+                <Component {...pageProps} />
+              </PageLayout>
+            </TinacmsGithubProvider>
+          </TinaProvider>
         </ThemeProvider>
       </>
     );

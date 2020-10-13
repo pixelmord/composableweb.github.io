@@ -1,7 +1,6 @@
 /* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+
 import { Box, Callout, Code, HeadingProps, Kbd, Link, Text, Divider, useColorMode } from '@chakra-ui/core';
 import { PropsWithChildren } from 'react';
 import NextLink from 'next/link';
@@ -97,7 +96,14 @@ const AnchorHeading: React.FC<HeadingProps> = ({
     >
       {children}
       {id && (
-        <Link aria-label="anchor" ml="0.375rem" color={color[colorMode]} css={{ opacity: 0 }} href={`#${id}`}>
+        <Link
+          aria-label="anchor"
+          ml="0.375rem"
+          color={color[colorMode]}
+          css={{ opacity: 0 }}
+          href={`#${id}`}
+          _hover={{ textDecoration: 'none' }}
+        >
           #
         </Link>
       )}
@@ -133,7 +139,7 @@ export const MDXComponents = {
   ),
   inlineCode: (props) => (
     <ThemeProvider theme={theme}>
-      <Code variantColor="yellow" fontSize="0.84em" {...props} />
+      <Code colorScheme="yellow" fontSize="0.84em" {...props} />
     </ThemeProvider>
   ),
   kbd: Kbd,

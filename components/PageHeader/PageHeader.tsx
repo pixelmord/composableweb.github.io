@@ -22,7 +22,7 @@ export const PageHeader: React.FC<FlexProps> = ({
         {children}
       </Flex>
       <Box
-        backgroundImage={`url('${require('../../public/static/images/james-owen-oFHMk5fD8-s-unsplash.jpg?resize&size=1000')}')`}
+        backgroundImage={`url('${require('../../public/static/images/james-owen-oFHMk5fD8-s-unsplash.jpg?resize&size=600')}')`}
         backgroundSize="cover"
         position="absolute"
         w="100%"

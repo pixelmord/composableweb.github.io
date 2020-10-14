@@ -15,15 +15,18 @@ export const PageHeaderBranding: React.FC<StackProps> = (props: PropsWithoutRef<
     mt={{ base: 0, lg: 20 }}
     h={'60px'}
   >
-    <Avatar
-      size="2xl"
-      w={['48px', '48px', '48px', '160px']}
-      h={['48px', '48px', '48px', '160px']}
-      name="Andreas Adam"
-      src="/static/favicons/android-chrome-192x192.png"
-      mr={[2, 4, 4, 0]}
-      opacity={0.75}
-    />
+    <NextLink href="/">
+      <Avatar
+        size="2xl"
+        w={['48px', '48px', '48px', '160px']}
+        h={['48px', '48px', '48px', '160px']}
+        name="Composable Web"
+        src="/static/favicons/android-chrome-192x192.png"
+        mr={[2, 4, 4, 0]}
+        opacity={0.75}
+        bg="transparent"
+      />
+    </NextLink>
     <Heading
       as="h2"
       my={{ base: 0, lg: 3 }}

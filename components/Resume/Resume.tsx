@@ -30,14 +30,16 @@ const Resume: React.FC<ResumePageProps> = ({ file: { data } }) => {
         </Box>
         <Box backgroundColor="gray.300">
           <Stack backgroundColor="gray.500" textAlign="center" p={10}>
-            <Avatar
-              size="xl"
-              w={['48px', '48px', '48px', '130px']}
-              h={['48px', '48px', '48px', '130px']}
-              name="Andreas Adam"
-              mx="auto"
-              src={data.basics.picture}
-            />
+            {data.basics.picture && (
+              <Avatar
+                size="xl"
+                w={['48px', '48px', '48px', '130px']}
+                h={['48px', '48px', '48px', '130px']}
+                name="Andreas Adam"
+                mx="auto"
+                src={data.basics.picture}
+              />
+            )}
 
             <Heading as="h2" size="xl">
               {data.basics.name}

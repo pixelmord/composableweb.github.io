@@ -10,7 +10,7 @@ export const PageHeaderBranding: React.FC<StackProps> = (props: PropsWithoutRef<
     {...props}
     flexDirection={['row', 'row', 'row', 'column']}
     textAlign={{ lg: 'center' }}
-    spacing={[0, 0, 0, 4]}
+    spacing={[0, 0, 0, 1]}
     alignItems={['center']}
     mt={{ base: 0, lg: 20 }}
     h={'60px'}
@@ -29,12 +29,12 @@ export const PageHeaderBranding: React.FC<StackProps> = (props: PropsWithoutRef<
     </NextLink>
     <Heading
       as="h2"
-      my={{ base: 0, lg: 3 }}
+      my={{ base: 0, lg: 8 }}
       fontSize={{ base: 'xl', lg: '3xl' }}
       fontFamily="heading"
       fontWeight="heading"
     >
-      <NextLink href="/">{config.common.title}</NextLink>
+      <NextLink href="/">{config.common.title.toLowerCase()}</NextLink>
     </Heading>
     <Heading as="h3" my={0} fontSize={{ base: 'md', lg: 'xl' }} display={{ base: 'none', lg: 'block' }}>
       {config.common.tagline}

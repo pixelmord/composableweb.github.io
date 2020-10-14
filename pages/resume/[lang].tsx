@@ -162,7 +162,7 @@ export const getStaticProps: GetStaticProps = async function ({ preview, preview
     return getGithubPreviewProps({
       ...previewData,
       head_branch: process.env.NEXT_PUBLIC_BASE_BRANCH,
-      fileRelativePath: `content/page-data/resume.${lang}.json`,
+      fileRelativePath: `page-data/resume.${lang}.json`,
       parse: parseJson,
     });
   }
@@ -172,8 +172,8 @@ export const getStaticProps: GetStaticProps = async function ({ preview, preview
       error: null,
       preview: false,
       file: {
-        fileRelativePath: `content/page-data/resume.${lang}.json`,
-        data: (await import(`../../content/page-data/resume.${lang}.json`)).default,
+        fileRelativePath: `page-data/resume.${lang}.json`,
+        data: (await import(`../../page-data/resume.${lang}.json`)).default,
       },
     },
   };

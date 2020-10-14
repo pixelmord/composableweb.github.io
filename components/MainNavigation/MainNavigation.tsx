@@ -24,6 +24,10 @@ export const MainNavigation: React.FC<BoxProps> = (props: PropsWithoutRef<PropsW
         variant="ghost"
       />
       <Box display={{ base: `${isOpen ? 'block' : 'none'}`, lg: 'block' }} pt={5} pb={8}>
+        <NavLink href="/resume/en" color={asPath.startsWith('/resume') ? colorActive : color}>
+          About me
+        </NavLink>
+        <Divider my={2} borderColor={borderColor} />
         <NavLink href="/blog" color={asPath.startsWith('/blog') ? colorActive : color}>
           Writing
         </NavLink>

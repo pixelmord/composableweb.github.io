@@ -1,5 +1,5 @@
 ### BlogPostTeaser
 
 ```js
-  <BlogPostTeaser />
+<BlogPostTeaser />
 ```

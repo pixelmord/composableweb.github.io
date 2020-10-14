@@ -52,7 +52,7 @@ typings/
 *.tgz
 
 # dotenv environment variable files
-.env*
+.env.*
 
 
 # Mac files
@@ -69,3 +69,4 @@ yarn-error.log
 
 .lighthouseci
 .mdx-data
+public/sitemap.xml

@@ -1,15 +1,21 @@
-import { defaultTheme } from 'prestyled';
-import { merge, Theme } from 'theme-ui';
+import { extendTheme } from '@chakra-ui/core';
+import { mode, Styles } from '@chakra-ui/theme-tools';
 
-export default merge(defaultTheme, {
-  colors: { ...defaultTheme.colors },
+import { prismTheme } from './prism';
+
+const theme: Styles = extendTheme({
+  config: {
+    useSystemColorMode: false,
+    initialColorMode: 'light',
+  },
+  colors: { primary: 'teal.600' },
   fonts: {
     heading: `'Archivo Narrow', sans-serif`,
     body: `'Barlow', sans-serif`,
     mono: `Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace`,
   },
   fontWeights: {
-    bold: 600,
+    bold: 700,
     heading: 500,
   },
   landingPage: {
@@ -52,11 +58,33 @@ export default merge(defaultTheme, {
     },
   },
   styles: {
-    root: {
-      fontFamily: 'body',
-      color: 'text',
-      bg: 'background',
-      lineHeight: 'calc(8px + 2ex)',
-    },
+    global: (props) => ({
+      body: {
+        fontFamily: 'body',
+        color: mode('gray.700', 'whiteAlpha.900')(props),
+        bg: mode('gray.50', 'gray.800')(props),
+        transition: 'background-color 0.2s',
+        lineHeight: 'calc(8px + 2ex)',
+      },
+
+      '*::placeholder': {
+        color: mode('gray.400', 'whiteAlpha.400')(props),
+      },
+      '*, *::before, &::after': {
+        borderColor: mode('gray.200', 'whiteAlpha.300')(props),
+        wordWrap: 'break-word',
+      },
+      '#__next': {
+        minHeight: '100vh',
+      },
+      hr: {
+        borderColor: mode('gray.700', 'whiteAlpha.900')(props),
+      },
+      pre: {
+        overflowX: 'auto',
+      },
+      ...prismTheme(props),
+    }),
   },
-} as Theme);
+});
+export default theme;

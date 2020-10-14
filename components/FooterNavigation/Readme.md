@@ -1,5 +1,5 @@
 ### FooterNavigation
 
 ```js
-  <FooterNavigation />
+<FooterNavigation />
 ```

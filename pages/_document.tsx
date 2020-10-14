@@ -8,8 +8,8 @@ const Doc = () => {
     <Html lang="en">
       <Head>
         <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-        <meta content="#ffffff" name="theme-color" />
-        <meta content="#ffffff" name="msapplication-TileColor" />
+        <meta content="#E2E8F0" name="theme-color" />
+        <meta content="#E2E8F0" name="msapplication-TileColor" />
         <meta content="/static/browserconfig.xml" name="msapplication-config" />
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />

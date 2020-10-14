@@ -1,3 +1,29 @@
+# [1.4.0](https://github.com/pixelmord/composableweb.github.io/compare/v1.3.1...v1.4.0) (2020-10-14)
+
+
+### Bug Fixes
+
+* forgotten dep ([c3d39dd](https://github.com/pixelmord/composableweb.github.io/commit/c3d39ddf76db8ec1c758d2eefb0511212f432532))
+* linter settings, code style corrections ([b2b7f39](https://github.com/pixelmord/composableweb.github.io/commit/b2b7f39ffd15da48dfca2713337261e0f64a647f))
+* safe variable use ([6fb5241](https://github.com/pixelmord/composableweb.github.io/commit/6fb5241c621197fa86a6b1f56de62c05cb55c92b))
+* **blog:** filename and path compatibility ([b6e47ce](https://github.com/pixelmord/composableweb.github.io/commit/b6e47cecd46995712f3434e8f22a8882a17a388a))
+* **ts:** linter found issues ([b47346b](https://github.com/pixelmord/composableweb.github.io/commit/b47346b6b1fcb62605aa929d7de124b1d153cfdf))
+* code style, refactoring inconsitencies ([cf4cd30](https://github.com/pixelmord/composableweb.github.io/commit/cf4cd30546e61065b733edbd2155f353caa9c5cd))
+* static props and paths ([c23e26e](https://github.com/pixelmord/composableweb.github.io/commit/c23e26e716436f096e8ddf9bd0751a1dd9a826ba))
+
+
+### Features
+
+* add analytics ([c844a7f](https://github.com/pixelmord/composableweb.github.io/commit/c844a7fbcd3a0ee2ba650f8665ad072562fcdba2))
+
+
+### Performance Improvements
+
+* dynamically import article editing ([057085f](https://github.com/pixelmord/composableweb.github.io/commit/057085f339a68c406a61d01d5ccc6b9d613e8985))
+* dynamically load 3d ([b0b5917](https://github.com/pixelmord/composableweb.github.io/commit/b0b591718e32f41ddaa37321b9d9477cf0488a1d))
+* dynamically load resume page editing ([1d7057d](https://github.com/pixelmord/composableweb.github.io/commit/1d7057d9b0b35082199a2ce182159550373f453a))
+* resize image ([699585e](https://github.com/pixelmord/composableweb.github.io/commit/699585ebf4359f5208e6476f09af130cbb14f450))
+
 ## [1.3.1](https://github.com/pixelmord/composableweb.github.io/compare/v1.3.0...v1.3.1) (2020-09-28)
 
 

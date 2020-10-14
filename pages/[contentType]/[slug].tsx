@@ -1,109 +1,24 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import { Form, usePlugin } from 'tinacms';
-import { InlineWysiwyg } from 'react-tinacms-editor';
-import { InlineText, InlineTextarea } from 'react-tinacms-inline';
+import dynamic from 'next/dynamic';
 import fg from 'fast-glob';
-import { useGithubMarkdownForm } from 'react-tinacms-github';
+
 import { GithubPreviewProps } from 'next-tinacms-github';
-import { GitFile } from 'react-tinacms-github/dist/src/form/useGitFileSha';
-import { Text } from '@chakra-ui/core';
 
 import { getMarkdownProps } from '~lib/server/utils';
-import { CodeRecipeFrontmatter } from '~lib/contentTypes';
-import { slugFromFilepath, titelize } from 'lib/slugHelpers';
-
+import { slugFromFilepath } from 'lib/slugHelpers';
 import { MarkdownPageProps, MarkdownFileData } from '~lib/propTypes';
-import Layout from '~components/ArticleLayout';
-import OpenAuthoringInlineForm from '~components/OpenAuthoringInlineForm';
-import Heading from '~components/Heading';
-import config from '../../config';
-import { mdxHydrateMarkdown } from '~lib/client/utils';
+import { CodeRecipeFrontmatter } from '~lib/contentTypes';
+import { Article } from '~components/Article';
+import { Spinner } from '@chakra-ui/core';
 
-const Recipe = ({ file, preview }: InferGetStaticPropsType<typeof getStaticProps>): React.ReactElement => {
-  const router = useRouter();
-  const url = `${config.common.url}${router.asPath}`;
-  const formConfig = {
-    label: 'Post',
-    fields: [
-      {
-        name: 'frontmatter.title',
-        label: 'Title',
-        component: 'text',
-      },
-      {
-        name: 'frontmatter.summary',
-        label: 'Summary',
-        component: 'textarea',
-      },
-      {
-        name: 'frontmatter.tags',
-        label: 'Tags',
-        component: 'tags',
-      },
-      // {
-      //   name: 'markdownBody',
-      //   label: 'Content',
-      //   component: 'markdown',
-      // },
-    ],
-  };
+const ArticleEditable = dynamic(() => import('~components/ArticleEditable'), {
+  loading: () => <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />,
+});
+export type ArticleProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-  // Registers Tina Form
-  const [data, form] = useGithubMarkdownForm(file as GitFile<MarkdownFileData<CodeRecipeFrontmatter>>, formConfig) as [
-    MarkdownFileData<CodeRecipeFrontmatter>,
-    Form
-  ];
-  usePlugin(form);
-
-  const frontmatter = data.frontmatter;
-  const markdownBody = data.markdownBody;
-  const markdown = mdxHydrateMarkdown(file.data.markdownObject, { scope: frontmatter });
-  const title = `${titelize(data.frontmatter.title)} | ${config.common.title}`;
-  const description =
-    data.frontmatter.summary ||
-    'Ideas and experiments in rapid prototyping, Front-End Development, Technical Leadership and Enterprise Architecture';
-  return (
-    <OpenAuthoringInlineForm form={form} path={file.fileRelativePath} preview={preview}>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          url,
-          title,
-          description,
-        }}
-      />
-      <Layout>
-        {router.isFallback ? (
-          <div>Loading…</div>
-        ) : (
-          <>
-            <Heading as="h1">
-              <InlineText name="frontmatter.title" />
-            </Heading>
-            {frontmatter.summary && (
-              <Text as="p">
-                <InlineTextarea name="frontmatter.summary" />
-              </Text>
-            )}
-            {preview ? (
-              <InlineWysiwyg name="markdownBody" format="markdown">
-                {markdownBody}
-              </InlineWysiwyg>
-            ) : (
-              markdown
-            )}
-          </>
-        )}
-      </Layout>
-    </OpenAuthoringInlineForm>
-  );
-};
-export default function RecipePage(props: InferGetStaticPropsType<typeof getStaticProps>): React.ReactElement {
+export default function ArticlePage(props: ArticleProps): React.ReactElement {
   const router = useRouter();
 
   if (!router.isFallback && !props.file) {
@@ -114,7 +29,10 @@ export default function RecipePage(props: InferGetStaticPropsType<typeof getStat
   if (!props.file) {
     return null;
   }
-  return <Recipe {...props} />;
+  if (props.preview) {
+    return <ArticleEditable {...props} />;
+  }
+  return <Article {...props} />;
 }
 
 export const getStaticProps: GetStaticProps<

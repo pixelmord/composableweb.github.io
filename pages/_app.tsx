@@ -77,8 +77,8 @@ export default class Site extends App {
           <meta content="#E2E8F0" name="theme-color" />
           <meta content="#E2E8F0" name="msapplication-TileColor" />
         </Head>
+        <DefaultSeo {...config.meta} />
         <ThemeProvider theme={theme}>
-          <DefaultSeo {...config.meta} />
           <TinaProvider cms={this.cms}>
             <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
               <PageLayout>

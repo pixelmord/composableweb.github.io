@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
-import { Box, Alert, Code, HeadingProps, Kbd, Link, Text, Divider, useColorMode } from '@chakra-ui/core';
+import { Box, Alert, Code, HeadingProps, Kbd, Link, Text, Divider, useColorMode, Image } from '@chakra-ui/core';
 import { PropsWithChildren } from 'react';
 import NextLink from 'next/link';
 import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
@@ -164,6 +164,11 @@ export const MDXComponents = {
   li: (props) => (
     <ThemeProvider theme={theme}>
       <Box as="li" pb={1} {...props} />
+    </ThemeProvider>
+  ),
+  img: (props) => (
+    <ThemeProvider theme={theme}>
+      <Image my={8} mx="auto" {...props} />
     </ThemeProvider>
   ),
   blockquote: Quote,

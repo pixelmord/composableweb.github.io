@@ -35,6 +35,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
+    'react/display-name': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',

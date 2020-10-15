@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/pixelmord/composableweb.github.io/compare/v1.4.1...v1.4.2) (2020-10-15)
+
+
+### Bug Fixes
+
+* frontmatter type ([42c20fb](https://github.com/pixelmord/composableweb.github.io/commit/42c20fbc4d19d068a7ceb52881702f13fe87d15b))
+
 ## [1.4.1](https://github.com/pixelmord/composableweb.github.io/compare/v1.4.0...v1.4.1) (2020-10-15)
 
 

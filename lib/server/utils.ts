@@ -1,4 +1,3 @@
-import matter from 'gray-matter';
 import renderToString from 'next-mdx-remote/render-to-string';
 import fg from 'fast-glob';
 import fs from 'fs';
@@ -6,7 +5,7 @@ import path from 'path';
 import { getGithubPreviewProps, parseMarkdown, GithubPreviewProps } from 'next-tinacms-github';
 import { MarkdownPageProps, MarkdownFileProps, MarkdownFrontmatter, MarkdownFileData } from '../propTypes';
 import mergeDeep from '~lib/objectHelpers';
-import { mdxRemoteOptions } from '~lib/mdx';
+import { mdxRemoteOptions, mdxMatter } from '~lib/mdx';
 
 export async function fetchMarkdownDoc<T extends MarkdownFrontmatter>(
   subdir = 'blog',
@@ -16,7 +15,7 @@ export async function fetchMarkdownDoc<T extends MarkdownFrontmatter>(
   const fullPath = path.resolve(fileRelativePath);
 
   const file = fs.readFileSync(fullPath);
-  const { content, data } = matter(file);
+  const { content, data } = mdxMatter<T>(file);
   const mdxSource = await mdxRenderToString(content, { scope: data });
   return {
     fileRelativePath,

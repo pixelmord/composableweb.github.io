@@ -6,6 +6,7 @@ import remarkCodeTitles from 'remark-code-titles';
 import readingTime from 'reading-time';
 
 import MDXComponents from '~components/MDXComponents';
+import { MarkdownFrontmatter } from './propTypes';
 
 export const mdxRemoteOptions = {
   components: MDXComponents,
@@ -16,14 +17,19 @@ export const mdxRemoteOptions = {
     filepath: '/some/file/path',
   },
 };
-
-export const mdxMatter = (file) => {
-  const { content, data } = matter(file);
+export interface IReadTimeResults {
+  text: string;
+  time: number;
+  words: number;
+  minutes: number;
+}
+export function mdxMatter<T extends MarkdownFrontmatter>(file, options = {}) {
+  const { content, data } = matter(file, options);
   const dataReadingTime = enhanceFrontmatterReadingTime(content);
-  return { content, data: { ...data, ...dataReadingTime } };
-};
+  return { content, data: { ...(data as T), ...dataReadingTime } };
+}
 
-export const enhanceFrontmatterReadingTime = (mdxContent) => {
+export const enhanceFrontmatterReadingTime = (mdxContent): { wordCount: number; readingTime: IReadTimeResults } => {
   return {
     wordCount: mdxContent.split(/\s+/gu).length,
     readingTime: readingTime(mdxContent),

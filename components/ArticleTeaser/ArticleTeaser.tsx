@@ -5,7 +5,7 @@ import { PostFrontmatter } from '~lib/contentTypes';
 import Heading from '~components/Heading';
 import NextLink from '~components/NextLink';
 import { slugFromFilepath } from '~lib/slugHelpers';
-import { FiTag } from 'react-icons/fi';
+import { FiTag, FiClock } from 'react-icons/fi';
 export type ArticleTeaserProps = BoxProps & {
   post: PostFrontmatter & { fileRelativePath: string };
   contentType: string;
@@ -39,15 +39,15 @@ export const ArticleTeaser: React.FC<ArticleTeaserProps> = ({ post, contentType,
       <HStack spacing={2}>
         {post.tags &&
           post.tags.map((tag) => (
-            <Tag size="sm" key={tag} variant="subtle" colorScheme="cyan" borderRadius="lg" pb={1} px={2}>
-              <TagLeftIcon boxSize="12px" as={FiTag} mt={1} />
+            <Tag size="sm" key={tag} variant="subtle" colorScheme="cyan" borderRadius="lg" px={2}>
+              <TagLeftIcon boxSize="14px" as={FiTag} />
               <TagLabel>{tag}</TagLabel>
             </Tag>
           ))}
-        {/* <Tag size="sm" variant="subtle" colorScheme="blue" borderRadius="lg" pb={1} px={2}>
-          <TagLeftIcon boxSize="12px" as={FiTag} mt={1} />
+        <Tag size="sm" variant="ghost" colorScheme="blue" borderRadius="lg" px={2}>
+          <TagLeftIcon boxSize="14px" as={FiClock} />
           <TagLabel>{post.readingTime.text}</TagLabel>
-        </Tag> */}
+        </Tag>
       </HStack>
     </Box>
   );

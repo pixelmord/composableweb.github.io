@@ -1,7 +1,9 @@
 import { NextPage } from 'next';
 
 import * as zod from 'zod';
+import { IReadTimeResults } from './mdx';
 import { MarkdownFileProps } from './propTypes';
+
 export type PostFrontmatter = {
   title: string;
   createdAt: string;
@@ -9,6 +11,8 @@ export type PostFrontmatter = {
   draft: boolean;
   summary?: string;
   tags?: string[];
+  wordCount: number;
+  readingTime: IReadTimeResults;
 };
 
 export type BlogFrontmatter = PostFrontmatter;

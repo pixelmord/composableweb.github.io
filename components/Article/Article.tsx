@@ -14,6 +14,8 @@ export const Article = ({ file }: ArticleProps): React.ReactElement => {
   const url = `${config.common.url}${router.asPath}`;
 
   const frontmatter = file.data.frontmatter;
+  // eslint-disable-next-line no-console
+  console.dir(file.data);
   const markdown = mdxHydrateMarkdown(file.data.markdownObject, { scope: frontmatter });
   const title = `${titelize(frontmatter.title)} | ${config.common.title}`;
   const description =

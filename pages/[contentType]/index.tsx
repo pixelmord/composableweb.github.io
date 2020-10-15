@@ -6,12 +6,12 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
 import { fetchAllMarkdownDocs } from '~lib/server/utils';
-import NextLink from '~components/NextLink';
 import { PostFrontmatter } from '~lib/contentTypes';
 import { MarkdownFileProps } from '~lib/propTypes';
-import { slugFromFilepath, titelize } from '~lib/slugHelpers';
+import { titelize } from '~lib/slugHelpers';
 import ArticleLayout from '~components/ArticleLayout';
 import config from '../../config';
+import ArticleTeaser from '~components/ArticleTeaser';
 
 const ThreeDixelDrawing = dynamic(() => import('~components/ThreeDixelDrawing'), {
   loading: () => <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />,
@@ -71,9 +71,12 @@ const RecipeOverviewPage: NextPage<RecipeOverviewpageProps> = ({
       )}
       {!!filteredPosts.length &&
         filteredPosts.map((post) => (
-          <NextLink key={post.fileRelativePath} href={`/${contentType}/${slugFromFilepath(post.fileRelativePath)}`}>
-            {post.data.frontmatter.title}
-          </NextLink>
+          <ArticleTeaser
+            post={{ ...post.data.frontmatter, fileRelativePath: post.fileRelativePath }}
+            contentType={contentType}
+            key={post.fileRelativePath}
+            mb={10}
+          />
         ))}
     </ArticleLayout>
   );

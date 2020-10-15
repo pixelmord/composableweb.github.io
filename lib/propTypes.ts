@@ -1,4 +1,5 @@
 import { GithubError } from 'next-tinacms-github';
+import { IReadTimeResults } from './mdx';
 
 export type MarkdownPagePropsWrapper<T = MarkdownFrontmatter> = {
   props: MarkdownPageProps<T>;
@@ -21,4 +22,4 @@ export type MarkdownFileProps<T = MarkdownFrontmatter> = {
   sha: string;
 };
 
-export type MarkdownFrontmatter = Record<string, string | string[] | number | number[] | boolean>;
+export type MarkdownFrontmatter = Record<string, string | string[] | number | number[] | boolean | IReadTimeResults>;

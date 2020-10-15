@@ -8,6 +8,7 @@ export type PostFrontmatter = {
   publishedAt: string;
   draft: boolean;
   summary?: string;
+  tags?: string[];
 };
 
 export type BlogFrontmatter = PostFrontmatter;

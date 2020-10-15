@@ -37,12 +37,13 @@ export const ArticleTeaser: React.FC<ArticleTeaserProps> = ({ post, contentType,
         </Text>
       )}
       <HStack spacing={2}>
-        {post.tags.map((tag) => (
-          <Tag size="sm" key={tag} variant="subtle" colorScheme="cyan" borderRadius="lg" pb={1} px={2}>
-            <TagLeftIcon boxSize="12px" as={FiTag} mt={1} />
-            <TagLabel>{tag}</TagLabel>
-          </Tag>
-        ))}
+        {post.tags &&
+          post.tags.map((tag) => (
+            <Tag size="sm" key={tag} variant="subtle" colorScheme="cyan" borderRadius="lg" pb={1} px={2}>
+              <TagLeftIcon boxSize="12px" as={FiTag} mt={1} />
+              <TagLabel>{tag}</TagLabel>
+            </Tag>
+          ))}
         {/* <Tag size="sm" variant="subtle" colorScheme="blue" borderRadius="lg" pb={1} px={2}>
           <TagLeftIcon boxSize="12px" as={FiTag} mt={1} />
           <TagLabel>{post.readingTime.text}</TagLabel>

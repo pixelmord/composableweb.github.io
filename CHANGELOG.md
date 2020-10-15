@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/pixelmord/composableweb.github.io/compare/v1.4.2...v1.4.3) (2020-10-15)
+
+
+### Bug Fixes
+
+* remove dev client id from env file ([1edfbb4](https://github.com/pixelmord/composableweb.github.io/commit/1edfbb49d76e56788c3fd36f748a862a00b876f1))
+
 ## [1.4.2](https://github.com/pixelmord/composableweb.github.io/compare/v1.4.1...v1.4.2) (2020-10-15)
 
 

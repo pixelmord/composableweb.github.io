@@ -1,17 +1,11 @@
 ---
-to: "<%= h.src() %>/content/code-recipes/<%= slug %>.mdx"
+to: "<%= h.src() %>/content/pages/<%= slug %>.mdx"
 ---
 ---
 title: "<%= h.inflection.titleize(title) %>"
 createdAt: '<%= date %>'
 publishedAt: '<%= date %>'
 tags:
-  - 'recipe'
+  - 'page'
 draft: true
 ---
-
-## Install
-
-```bash
-yarn add
-```

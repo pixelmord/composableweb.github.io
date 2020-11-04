@@ -37,7 +37,9 @@ export default function ArticlePage(props: ArticleProps): React.ReactElement {
 }
 
 export const getStaticProps: GetStaticProps<
-  MarkdownPageProps<CodeRecipeFrontmatter> | GithubPreviewProps<MarkdownFileData<CodeRecipeFrontmatter>>['props']
+  | MarkdownPageProps<CodeRecipeFrontmatter>
+  | GithubPreviewProps<MarkdownFileData<CodeRecipeFrontmatter>>['props']
+  | { preview: boolean }
 > = async function ({ preview, previewData, params: { slug, contentType } }) {
   if (!slug || !slug.length) {
     return { preview };

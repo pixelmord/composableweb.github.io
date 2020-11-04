@@ -1,6 +1,12 @@
-# GIT
-
-// Last modified: 2019/08/03 09:03:02
+---
+title: 'GIT'
+publishedAt: '2019-08-03'
+createdAt: '2019-07-23'
+summary: 'GIT commands'
+tags:
+  - GIT
+draft: false
+---
 
 ## useful commands
 

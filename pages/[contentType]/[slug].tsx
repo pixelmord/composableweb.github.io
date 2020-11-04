@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import dynamic from 'next/dynamic';
 import fg from 'fast-glob';
+import fs from 'fs';
 
 import { GithubPreviewProps } from 'next-tinacms-github';
 
@@ -38,14 +39,17 @@ export default function ArticlePage(props: ArticleProps): React.ReactElement {
 export const getStaticProps: GetStaticProps<
   MarkdownPageProps<CodeRecipeFrontmatter> | GithubPreviewProps<MarkdownFileData<CodeRecipeFrontmatter>>['props']
 > = async function ({ preview, previewData, params: { slug, contentType } }) {
-  const props = await getMarkdownProps<CodeRecipeFrontmatter>(
-    contentType as string,
-    `${slug}.mdx`,
-    preview,
-    previewData
-  );
+  if (!slug || !slug.length) {
+    return { preview };
+  }
 
-  return props;
+  if (fs.existsSync(`${slug}.mdx`)) {
+    return await getMarkdownProps<CodeRecipeFrontmatter>(contentType as string, `${slug}.mdx`, preview, previewData);
+  } else if (fs.existsSync(`${slug}.md`)) {
+    return await getMarkdownProps<CodeRecipeFrontmatter>(contentType as string, `${slug}.md`, preview, previewData);
+  }
+  s;
+  return { preview };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

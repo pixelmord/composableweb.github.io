@@ -1,6 +1,12 @@
-# JS
-
-// Last modified: 2019/08/30 10:04:15
+---
+title: 'JavaScript'
+publishedAt: '2019-08-30'
+createdAt: '2019-07-23'
+summary: 'Code style conventions'
+tags:
+  - Office
+draft: false
+---
 
 Files and best practices for a JavaScript project.
 

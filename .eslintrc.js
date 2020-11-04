@@ -7,8 +7,8 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
     '@pacote/eslint-config-jest',
+    'prettier/@typescript-eslint',
     'prettier',
   ],
   settings: {

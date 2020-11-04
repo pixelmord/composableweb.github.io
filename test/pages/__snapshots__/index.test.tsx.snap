@@ -12,12 +12,12 @@ exports[`Home page matches snapshot 1`] = `
         class="css-1mswima"
       >
         <h1
-          class="chakra-heading css-161z3ev"
+          class="chakra-heading css-1dg7c7b"
         >
           Rapid prototyping for the web
         </h1>
         <h2
-          class="chakra-heading css-1yeipp6"
+          class="chakra-heading css-egilk4"
         >
           Enterprise ready modern frontends backed by serverless microservices
         </h2>

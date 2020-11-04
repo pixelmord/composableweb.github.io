@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps<
   } else if (fs.existsSync(`${slug}.md`)) {
     return await getMarkdownProps<CodeRecipeFrontmatter>(contentType as string, `${slug}.md`, preview, previewData);
   }
-  s;
+
   return { preview };
 };
 

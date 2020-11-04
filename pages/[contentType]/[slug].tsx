@@ -39,10 +39,10 @@ export default function ArticlePage(props: ArticleProps): React.ReactElement {
 export const getStaticProps: GetStaticProps<
   | MarkdownPageProps<CodeRecipeFrontmatter>
   | GithubPreviewProps<MarkdownFileData<CodeRecipeFrontmatter>>['props']
-  | { preview: boolean }
+  | { preview: boolean; file: boolean }
 > = async function ({ preview, previewData, params: { slug, contentType } }) {
   if (!slug || !slug.length) {
-    return { preview };
+    return { preview, file: false };
   }
 
   if (fs.existsSync(`${slug}.mdx`)) {
@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps<
     return await getMarkdownProps<CodeRecipeFrontmatter>(contentType as string, `${slug}.md`, preview, previewData);
   }
 
-  return { preview };
+  return { preview, file: false };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

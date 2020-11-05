@@ -7,9 +7,10 @@ import Layout from '~components/ArticleLayout';
 import Heading from '~components/Heading';
 import config from '../../config';
 import { mdxHydrateMarkdown } from '~lib/client/utils';
-import { ArticleProps } from '../../pages/[contentType]/[slug]';
+import { MarkdownPageProps } from '~lib/propTypes';
+import { PostFrontmatter } from '~lib/contentTypes';
 
-export const Article = ({ file }: ArticleProps): React.ReactElement => {
+export const Article = ({ file }: MarkdownPageProps<PostFrontmatter>): React.ReactElement => {
   const router = useRouter();
   const url = `${config.common.url}${router.asPath}`;
 

@@ -1,6 +1,12 @@
-# MacOS
-
-// Last modified: 2020/09/02 16:01:29
+---
+title: 'MacOS'
+publishedAt: '2020-09-02'
+createdAt: '2019-07-23'
+summary: 'Code style conventions'
+tags:
+  - Mac
+draft: false
+---
 
 ## Clear package manager caches
 

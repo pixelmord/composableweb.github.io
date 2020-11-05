@@ -1,5 +1,6 @@
-import { Avatar, Stack, StackProps } from '@chakra-ui/core';
+import { Stack, StackProps } from '@chakra-ui/core';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
+import Image from 'next/image';
 
 import config from '../../config';
 import NextLink from '~components/NextLink';
@@ -15,17 +16,8 @@ export const PageHeaderBranding: React.FC<StackProps> = (props: PropsWithoutRef<
     mt={{ base: 0, lg: 20 }}
     h={'60px'}
   >
-    <NextLink href="/">
-      <Avatar
-        size="2xl"
-        w={['48px', '48px', '48px', '160px']}
-        h={['48px', '48px', '48px', '160px']}
-        name="Composable Web"
-        src="/static/favicons/android-chrome-192x192.png"
-        mr={[2, 4, 4, 0]}
-        opacity={0.75}
-        bg="transparent"
-      />
+    <NextLink href="/" mr={[2, 4, 4, 0]} display="inline-block" opacity={0.75}>
+      <Image width={160} height={160} alt="Composable Web" src="/static/favicons/android-chrome-192x192.png" />
     </NextLink>
     <Heading
       as="h2"

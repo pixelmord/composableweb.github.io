@@ -41,12 +41,21 @@ export async function fetchAllMarkdownDocs<T extends MarkdownFrontmatter>(
   );
 }
 
+export type NotFoundProps = { props: { preview: boolean; file: boolean; error: string | undefined } };
 export const getMarkdownProps = async <T extends MarkdownFrontmatter>(
   subdir = 'blog',
-  fileName: string,
+  slug: string,
   preview: boolean,
   previewData: { github_access_token: string; working_repo_full_name: string; head_branch: string }
-): Promise<{ props: MarkdownPageProps<T> } | GithubPreviewProps<MarkdownFileData<T>>> => {
+): Promise<{ props: MarkdownPageProps<T> } | GithubPreviewProps<MarkdownFileData<T>> | NotFoundProps> => {
+  let fileName: string;
+  if (fs.existsSync(`content/${subdir}/${slug}.mdx`)) {
+    fileName = `${slug}.mdx`;
+  } else if (fs.existsSync(`content/${subdir}/${slug}.md`)) {
+    fileName = `${slug}.md`;
+  } else {
+    return { props: { preview: false, file: false, error: 'file not found' } };
+  }
   const fileRelativePath = `content/${subdir}/${fileName}`;
   if (preview) {
     const previewProps = await getGithubPreviewProps<MarkdownFileData<T>>({

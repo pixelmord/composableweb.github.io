@@ -8,8 +8,8 @@ import { GithubPreviewProps } from 'next-tinacms-github';
 
 import { getMarkdownProps } from '~lib/server/utils';
 import { slugFromFilepath } from 'lib/slugHelpers';
-import { MarkdownPageProps, MarkdownFileData } from '~lib/propTypes';
-import { CodeRecipeFrontmatter } from '~lib/contentTypes';
+import { MarkdownPageProps, MarkdownFileData, MarkdownFileProps } from '~lib/propTypes';
+import { PostFrontmatter } from '~lib/contentTypes';
 import { Article } from '~components/Article';
 import { Spinner } from '@chakra-ui/core';
 
@@ -18,34 +18,37 @@ const ArticleEditable = dynamic(() => import('~components/ArticleEditable'), {
 });
 export type ArticleProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-export default function ArticlePage(props: ArticleProps): React.ReactElement {
+export default function ArticlePage({ file, error, ...props }: ArticleProps): React.ReactElement {
   const router = useRouter();
 
-  if (!router.isFallback && !props.file) {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  if (error) {
+    return <ErrorPage statusCode={500} />;
+  }
+  if (!router.isFallback && !file) {
     return <ErrorPage statusCode={404} />;
   }
   // in cases router params was not defined yet, file cannot be loaded in getStaticProps
   // @see: https://github.com/vercel/next.js/issues/8259
-  if (!props.file) {
+  if (!file) {
     return null;
   }
   if (props.preview) {
-    return <ArticleEditable {...props} />;
+    return <ArticleEditable file={file as MarkdownFileProps<PostFrontmatter>} {...props} />;
   }
-  return <Article {...props} />;
+
+  return <Article file={file as MarkdownFileProps<PostFrontmatter>} {...props} />;
 }
 
 export const getStaticProps: GetStaticProps<
-  MarkdownPageProps<CodeRecipeFrontmatter> | GithubPreviewProps<MarkdownFileData<CodeRecipeFrontmatter>>['props']
+  | MarkdownPageProps<PostFrontmatter>
+  | GithubPreviewProps<MarkdownFileData<PostFrontmatter>>['props']
+  | { preview: boolean; file: boolean; error: string | undefined }
 > = async function ({ preview, previewData, params: { slug, contentType } }) {
-  const props = await getMarkdownProps<CodeRecipeFrontmatter>(
-    contentType as string,
-    `${slug}.mdx`,
-    preview,
-    previewData
-  );
-
-  return props;
+  if (!slug || !slug.length) {
+    return { props: { preview: false, file: false, error: 'invalid slug' } };
+  }
+  return await getMarkdownProps<PostFrontmatter>(contentType as string, slug as string, preview, previewData);
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

@@ -1,6 +1,12 @@
-# Google Office
-
-// Last modified: 2020/02/23 09:24:32
+---
+title: 'Google Office'
+publishedAt: '2020-02-23'
+createdAt: '2019-07-23'
+summary: 'Code style conventions'
+tags:
+  - Office
+draft: false
+---
 
 ## GSheets
 

@@ -8,17 +8,19 @@ import { InlineWysiwyg } from 'react-tinacms-editor';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { GitFile } from 'react-tinacms-github/dist/src/form/useGitFileSha';
 
-import { CodeRecipeFrontmatter } from '~lib/contentTypes';
+import { CodeRecipeFrontmatter, PostFrontmatter } from '~lib/contentTypes';
 import { titelize } from 'lib/slugHelpers';
 import { MarkdownFileData } from '~lib/propTypes';
 import Layout from '~components/ArticleLayout';
 import OpenAuthoringInlineForm from '~components/OpenAuthoringInlineForm';
 import Heading from '~components/Heading';
 import config from '../../config';
+import { GithubPreviewProps } from 'next-tinacms-github';
 
-import { ArticleProps } from '../../pages/[contentType]/[slug]';
-
-export const ArticleEditable = ({ file, preview }: ArticleProps): React.ReactElement => {
+export const ArticleEditable = ({
+  file,
+  preview,
+}: Omit<GithubPreviewProps<MarkdownFileData<PostFrontmatter>>['props'], 'error'>): React.ReactElement => {
   const router = useRouter();
   const url = `${config.common.url}${router.asPath}`;
   const formConfig = {

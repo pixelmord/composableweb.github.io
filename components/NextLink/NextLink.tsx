@@ -23,7 +23,7 @@ export const NextLink: React.FC<NextLinkProps> = ({
     passHref={passHref}
     prefetch={prefetch}
   >
-    <Link {...rest} as="a" />
+    <Link {...rest} />
   </NLink>
 );
 export default NextLink;

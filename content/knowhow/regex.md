@@ -1,6 +1,12 @@
-# Regular Expressions
-
-// Last modified: 2020/04/22 08:09:23
+---
+title: 'Regular Expressions'
+publishedAt: '2020-04-22'
+createdAt: '2019-07-23'
+summary: 'Regular Expressions'
+tags:
+  - regex
+draft: false
+---
 
 ## Web regex
 

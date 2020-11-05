@@ -1,4 +1,12 @@
-# Typescript
+---
+title: 'Start a new Project'
+publishedAt: '2020-05-18'
+createdAt: '2019-07-23'
+summary: 'Project Bootstrapping'
+tags:
+  - project
+draft: true
+---
 
 // Last modified: 2020/10/28 11:09:05
 

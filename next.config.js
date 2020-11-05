@@ -21,5 +21,8 @@ module.exports = withPlugins(
   {
     // next core options
     pageExtensions: ['ts', 'tsx'],
+    images: {
+      deviceSizes: [480, 768, 992, 1280],
+    },
   }
 );

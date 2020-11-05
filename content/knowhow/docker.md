@@ -1,6 +1,13 @@
-# Docker
-
-// Last modified: 2019/07/23 13:30:29
+---
+title: 'Docker'
+publishedAt: '2019-07-23'
+createdAt: '2019-07-23'
+summary: 'Useful Docker Commands'
+tags:
+  - Docker
+  - CLI
+draft: false
+---
 
 ```bash
 # kill all running containers with

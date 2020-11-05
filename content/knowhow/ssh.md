@@ -1,6 +1,12 @@
-# SSH
-
-// Last modified: 2020/04/22 08:09:29
+---
+title: 'SSH'
+publishedAt: '2020-04-22'
+createdAt: '2019-07-23'
+summary: 'SSH'
+tags:
+  - SSH
+draft: false
+---
 
 see [SSH.com](https://www.ssh.com/ssh)
 

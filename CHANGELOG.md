@@ -1,3 +1,14 @@
+## [1.4.4](https://github.com/pixelmord/composableweb.github.io/compare/v1.4.3...v1.4.4) (2020-11-05)
+
+
+### Bug Fixes
+
+* content type improvements, valid frontmatter ([8f36bbf](https://github.com/pixelmord/composableweb.github.io/commit/8f36bbf3c36f45fde2663c83251acdea090dd7be))
+* loading of md files, frontmatter ([d5d121a](https://github.com/pixelmord/composableweb.github.io/commit/d5d121ad4ac723f511577c04b54f0c35f6efd6c4))
+* proper test for file extension ([91b0f2c](https://github.com/pixelmord/composableweb.github.io/commit/91b0f2cfbfbf743c9ab7932f3602b86757b4da34))
+* type ([aa1ccd1](https://github.com/pixelmord/composableweb.github.io/commit/aa1ccd1790015dd978685edbe6c2ec85f41696b4))
+* typo ([0363bf0](https://github.com/pixelmord/composableweb.github.io/commit/0363bf056f152d3a6798065b7a057f6d2f477df9))
+
 ## [1.4.3](https://github.com/pixelmord/composableweb.github.io/compare/v1.4.2...v1.4.3) (2020-10-15)
 
 

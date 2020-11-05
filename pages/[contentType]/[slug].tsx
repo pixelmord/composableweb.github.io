@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import dynamic from 'next/dynamic';
 import fg from 'fast-glob';
-import fs from 'fs';
 
 import { GithubPreviewProps } from 'next-tinacms-github';
 
@@ -49,14 +48,7 @@ export const getStaticProps: GetStaticProps<
   if (!slug || !slug.length) {
     return { props: { preview: false, file: false, error: 'invalid slug' } };
   }
-
-  if (fs.existsSync(`${slug}.mdx`)) {
-    return await getMarkdownProps<PostFrontmatter>(contentType as string, `${slug}.mdx`, preview, previewData);
-  } else if (fs.existsSync(`${slug}.md`)) {
-    return await getMarkdownProps<PostFrontmatter>(contentType as string, `${slug}.md`, preview, previewData);
-  }
-
-  return { props: { preview: false, file: false, error: 'file not found' } };
+  return await getMarkdownProps<PostFrontmatter>(contentType as string, slug as string, preview, previewData);
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

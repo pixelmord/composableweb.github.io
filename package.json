@@ -2,7 +2,7 @@
   "name": "composableweb.github.io",
   "private": true,
   "description": "ComposableWeb website",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "author": "Andreas Adam <andreas.adam@composableweb.com> (https://composableweb.com/)",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",

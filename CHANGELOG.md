@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/pixelmord/composableweb.github.io/compare/v1.4.4...v1.5.0) (2020-11-10)
+
+
+### Bug Fixes
+
+* amend props for image ([042a8a5](https://github.com/pixelmord/composableweb.github.io/commit/042a8a59d5aba0f17a38ebf49f4a6003ff109655))
+
+
+### Features
+
+* homepage sections, tina blocks ([acc2310](https://github.com/pixelmord/composableweb.github.io/commit/acc2310c619349b9b9846d75e04ebc97f0c6f688))
+
 ## [1.4.4](https://github.com/pixelmord/composableweb.github.io/compare/v1.4.3...v1.4.4) (2020-11-05)
 
 

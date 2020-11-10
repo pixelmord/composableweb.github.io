@@ -1,15 +1,16 @@
 import * as React from 'react';
 import Head from 'next/head';
 import GoogleFonts from 'next-google-fonts';
-
-import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
+import Router from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import App, { AppProps } from 'next/app';
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
+import * as ackeeTracker from 'ackee-tracker';
+
 import { TinaCMS, TinaProvider } from 'tinacms';
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
 import { NextGithubMediaStore } from 'next-tinacms-github';
-import * as ackeeTracker from 'ackee-tracker';
-import Router from 'next/router';
+import { DateFieldPlugin } from 'react-tinacms-date';
 
 import config from '../config';
 import theme from '../styles';
@@ -31,15 +32,16 @@ export default class Site extends App {
       baseBranch: process.env.NEXT_PUBLIC_BASE_BRANCH,
     });
     const mediaStore = new NextGithubMediaStore(githubClient);
-    this.cms = new TinaCMS({
+    const cms = new TinaCMS({
       enabled: !!props.pageProps.preview,
       apis: {
         /**
          * 2. Register the GithubClient
          */
         github: githubClient,
-        media: mediaStore,
       },
+      media: mediaStore,
+      plugins: [DateFieldPlugin],
       /**
        * 3. Hide the Sidebar & Toolbar
        *    unless we're in Preview/Edit Mode
@@ -47,9 +49,13 @@ export default class Site extends App {
       sidebar: props.pageProps.preview,
       toolbar: props.pageProps.preview,
     });
+    this.cms = cms;
+    import('react-tinacms-editor').then(({ MarkdownFieldPlugin }) => {
+      cms.plugins.add(MarkdownFieldPlugin);
+    });
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (typeof window !== 'undefined') {
       const ackeeTrackerInstance = ackeeTracker.create(
         {
@@ -67,7 +73,7 @@ export default class Site extends App {
     }
   }
 
-  render() {
+  render(): React.ReactElement {
     const { Component, pageProps } = this.props;
     return (
       <>

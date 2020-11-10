@@ -20,7 +20,7 @@ const Doc = () => {
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
       </Head>
       <body>
-        <ColorModeScript initialColorMode="light" />
+        <ColorModeScript initialColorMode="dark" />
         <Main />
         <NextScript />
       </body>

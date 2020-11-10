@@ -1,5 +1,4 @@
-import { usePlugin } from 'tinacms';
-import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github';
+import { useGithubJsonForm } from 'react-tinacms-github';
 import { InlineImage, InlineText, InlineTextarea } from 'react-tinacms-inline';
 
 import { Avatar, Box, Divider, Flex, Grid, Link, Stack } from '@chakra-ui/core';
@@ -18,7 +17,7 @@ const socialIcons = {
   GitHub: FiGithub,
   LinkedIn: FiLinkedin,
 };
-const ResumeEditable: React.FC<ResumePageProps> = ({ file, preview }) => {
+const ResumeEditable: React.FC<ResumePageProps> = ({ file }) => {
   const formOptions = {
     label: 'Resume',
     fields: [
@@ -49,10 +48,9 @@ const ResumeEditable: React.FC<ResumePageProps> = ({ file, preview }) => {
     ],
   };
   const [data, form] = useGithubJsonForm(file as GitFile<ResumeData>, formOptions);
-  usePlugin(form);
-  useGithubToolbarPlugins();
+
   return (
-    <OpenAuthoringInlineForm form={form} path={file.fileRelativePath} preview={preview}>
+    <OpenAuthoringInlineForm form={form}>
       <ArticleLayout>
         <Grid
           backgroundColor="white"

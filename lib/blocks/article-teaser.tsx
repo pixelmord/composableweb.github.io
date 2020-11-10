@@ -53,7 +53,7 @@ export const ArticleTeaser: React.FC<ArticleTeaserProps> = ({
   ...props
 }: PropsWithoutRef<PropsWithChildren<ArticleTeaserProps>>) => (
   <Flex {...props}>
-    {data.image && <Image src={data.image} />}
+    {data.image && <Image src={data.image} width={100} height={100} />}
     <Box>
       {data.heading && <Heading>{data.heading}</Heading>}
       {data.subheading && <Heading as="h3">{data.subheading}</Heading>}

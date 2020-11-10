@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import { Text, Spinner } from '@chakra-ui/core';
 
-import { Form, usePlugin } from 'tinacms';
+import { Form } from 'tinacms';
 import { InlineText, InlineTextarea } from 'react-tinacms-inline';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
@@ -19,7 +19,6 @@ import { GithubPreviewProps } from 'next-tinacms-github';
 
 export const ArticleEditable = ({
   file,
-  preview,
 }: Omit<GithubPreviewProps<MarkdownFileData<PostFrontmatter>>['props'], 'error'>): React.ReactElement => {
   const router = useRouter();
   const url = `${config.common.url}${router.asPath}`;
@@ -54,7 +53,6 @@ export const ArticleEditable = ({
     MarkdownFileData<CodeRecipeFrontmatter>,
     Form
   ];
-  usePlugin(form);
 
   const frontmatter = data.frontmatter;
   const markdownBody = data.markdownBody;
@@ -63,7 +61,7 @@ export const ArticleEditable = ({
     frontmatter.summary ||
     'Ideas and experiments in rapid prototyping, Front-End Development, Technical Leadership and Enterprise Architecture';
   return (
-    <OpenAuthoringInlineForm form={form} path={file.fileRelativePath} preview={preview}>
+    <OpenAuthoringInlineForm form={form}>
       <NextSeo
         title={title}
         description={description}

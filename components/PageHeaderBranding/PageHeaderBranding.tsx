@@ -16,12 +16,20 @@ export const PageHeaderBranding: React.FC<StackProps> = (props: PropsWithoutRef<
     mt={{ base: 0, lg: 20 }}
     h={'60px'}
   >
-    <NextLink href="/" mr={[2, 4, 4, 0]} display="inline-block" opacity={0.75}>
+    <NextLink
+      href="/"
+      mr={[2, 4, 4, 0]}
+      display="inline-block"
+      opacity={0.75}
+      lineHeight={1}
+      sx={{ '& img': { w: { base: '48px', lg: '160px' } } }}
+    >
       <Image width={160} height={160} alt="Composable Web" src="/static/favicons/android-chrome-192x192.png" />
     </NextLink>
     <Heading
       as="h2"
       my={{ base: 0, lg: 8 }}
+      lineHeight={1}
       fontSize={{ base: 'xl', lg: '3xl' }}
       fontFamily="heading"
       fontWeight="heading"

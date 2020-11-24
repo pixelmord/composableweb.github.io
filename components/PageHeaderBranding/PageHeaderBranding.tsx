@@ -1,4 +1,4 @@
-import { Stack, StackProps } from '@chakra-ui/core';
+import { Stack, StackProps } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import Image from 'next/image';
 

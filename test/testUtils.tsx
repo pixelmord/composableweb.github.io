@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/react';
 
 import theme from '../styles';
 

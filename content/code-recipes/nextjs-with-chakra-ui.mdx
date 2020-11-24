@@ -17,7 +17,7 @@ Also see https://medium.com/javascript-in-plain-english/setup-a-next-js-app-with
 ## Install dependencies
 
 ```bash
-yarn add @chakra-ui/core@next
+yarn add @chakra-ui/react@next
 ```
 
 ## Create a theme that customizes the defaults of Chakra
@@ -26,7 +26,7 @@ For example:
 `./styles/index.ts`
 
 ```js:index.ts
-import { extendTheme } from '@chakra-ui/core';
+import { extendTheme } from '@chakra-ui/react';
 import { mode, Styles } from '@chakra-ui/theme-tools';
 
 const theme: Styles = extendTheme({
@@ -72,7 +72,7 @@ export default theme;
 
 ```js:_app.js
 import React from 'react';
-import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/react';
 import { AppProps } from 'next/app';
 
 import theme from '../styles';

@@ -4,7 +4,7 @@ import GoogleFonts from 'next-google-fonts';
 import Router from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import App, { AppProps } from 'next/app';
-import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/react';
 import * as ackeeTracker from 'ackee-tracker';
 
 import { TinaCMS, TinaProvider } from 'tinacms';
@@ -50,9 +50,9 @@ export default class Site extends App {
       toolbar: props.pageProps.preview,
     });
     this.cms = cms;
-    import('react-tinacms-editor').then(({ MarkdownFieldPlugin }) => {
-      cms.plugins.add(MarkdownFieldPlugin);
-    });
+    // import('react-tinacms-editor').then(({ MarkdownFieldPlugin }) => {
+    //   cms.plugins.add(MarkdownFieldPlugin);
+    // });
   }
 
   componentDidMount(): void {

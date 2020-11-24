@@ -1,4 +1,4 @@
-import { Box, BoxProps, HStack, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/core';
+import { Box, BoxProps, HStack, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react';
 import { format } from 'date-fns';
 
 import { PostFrontmatter } from '~lib/contentTypes';

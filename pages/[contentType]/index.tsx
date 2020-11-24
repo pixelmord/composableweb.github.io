@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
-import { Spinner, Text } from '@chakra-ui/core';
+import { Spinner, Text } from '@chakra-ui/react';
 import fg from 'fast-glob';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';

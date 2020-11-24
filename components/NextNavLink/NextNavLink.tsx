@@ -1,4 +1,4 @@
-import { Link, LinkProps } from '@chakra-ui/core';
+import { Link, LinkProps } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 import { default as NLink, LinkProps as NLinkProps } from 'next/link';
 

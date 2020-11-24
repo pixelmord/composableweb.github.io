@@ -1,4 +1,4 @@
-import { Flex, BoxProps } from '@chakra-ui/core';
+import { Flex, BoxProps } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 
 export const PageFooter: React.FC<BoxProps> = ({ children }: PropsWithoutRef<PropsWithChildren<BoxProps>>) => (

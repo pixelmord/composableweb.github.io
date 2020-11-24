@@ -1,4 +1,4 @@
-import { Box, BoxProps, Heading } from '@chakra-ui/core';
+import { Box, BoxProps, Heading } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import { FrontMatter } from 'types/mdx';
 import NextLink from '~components/NextLink';

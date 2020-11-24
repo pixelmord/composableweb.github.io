@@ -1,7 +1,7 @@
 ---
 to: "<%= h.src() %>/blocks/<%= name %>.tsx"
 ---
-import { Box, BoxProps } from '@chakra-ui/core';
+import { Box, BoxProps } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 
 /*

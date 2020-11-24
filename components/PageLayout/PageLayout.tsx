@@ -1,4 +1,4 @@
-import { Flex, FlexProps, useColorModeValue } from '@chakra-ui/core';
+import { Flex, FlexProps, useColorModeValue } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 
 import PageHeader from '~components/PageHeader';

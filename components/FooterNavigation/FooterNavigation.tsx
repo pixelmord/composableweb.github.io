@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@chakra-ui/core';
+import { Box, BoxProps } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 
 import { NextNavLink as NavLink } from '../NextNavLink';

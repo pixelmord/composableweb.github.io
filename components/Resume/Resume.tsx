@@ -1,4 +1,4 @@
-import { Avatar, Box, Divider, Flex, Grid, Link, Stack, Text, useColorModeValue } from '@chakra-ui/core';
+import { Avatar, Box, Divider, Flex, Grid, Link, Stack, Text, useColorModeValue } from '@chakra-ui/react';
 import { FiPhone, FiMail, FiLink, FiLinkedin, FiTwitter, FiGithub } from 'react-icons/fi';
 
 import ArticleLayout from '~components/ArticleLayout';

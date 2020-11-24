@@ -1,5 +1,5 @@
 ---
-to: "<%= h.src() %>/content/pages/<%= slug %>.mdx"
+to: "<%= h.src() %>/content/pages/<%= slug %>.md"
 ---
 ---
 title: "<%= h.inflection.titleize(title) %>"

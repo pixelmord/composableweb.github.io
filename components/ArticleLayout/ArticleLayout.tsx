@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex } from '@chakra-ui/core';
+import { Box, BoxProps, Flex } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import TinaEditLink from '~components/TinaEditLink';
 

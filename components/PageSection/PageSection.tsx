@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@chakra-ui/core';
+import { Box, BoxProps } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 
 export const PageSection: React.FC<BoxProps> = ({ children, ...rest }: PropsWithChildren<BoxProps>) => (

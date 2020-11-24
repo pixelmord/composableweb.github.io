@@ -1,7 +1,7 @@
 import { useGithubJsonForm } from 'react-tinacms-github';
 import { InlineImage, InlineText, InlineTextarea } from 'react-tinacms-inline';
 
-import { Avatar, Box, Divider, Flex, Grid, Link, Stack } from '@chakra-ui/core';
+import { Avatar, Box, Divider, Flex, Grid, Link, Stack } from '@chakra-ui/react';
 import { FiPhone, FiMail, FiLink, FiLinkedin, FiTwitter, FiGithub } from 'react-icons/fi';
 
 import { ResumeData } from 'lib/contentTypes';

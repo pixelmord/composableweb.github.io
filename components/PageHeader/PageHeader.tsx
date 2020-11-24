@@ -1,4 +1,4 @@
-import { Box, Flex, FlexProps, useColorModeValue } from '@chakra-ui/core';
+import { Box, Flex, FlexProps, useColorModeValue } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 
 export const PageHeader: React.FC<FlexProps> = ({

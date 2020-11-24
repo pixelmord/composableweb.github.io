@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from '@chakra-ui/core';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import { BlocksControls, InlineText, InlineImage } from 'react-tinacms-inline';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { SectionBlockData } from '~lib/blocks/section';

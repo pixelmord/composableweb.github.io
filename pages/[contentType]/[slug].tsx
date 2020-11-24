@@ -11,7 +11,7 @@ import { slugFromFilepath } from 'lib/slugHelpers';
 import { MarkdownPageProps, MarkdownFileData, MarkdownFileProps } from '~lib/propTypes';
 import { PostFrontmatter } from '~lib/contentTypes';
 import { Article } from '~components/Article';
-import { Spinner } from '@chakra-ui/core';
+import { Spinner } from '@chakra-ui/react';
 
 const ArticleEditable = dynamic(() => import('~components/ArticleEditable'), {
   loading: () => <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />,

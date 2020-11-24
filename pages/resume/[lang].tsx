@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { ResumeData } from 'lib/contentTypes';
 import config from '../../config';
 import Resume from '~components/Resume';
-import { Spinner } from '@chakra-ui/core';
+import { Spinner } from '@chakra-ui/react';
 
 export type ResumePageProps = {
   file: {

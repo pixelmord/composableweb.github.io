@@ -1,4 +1,4 @@
-import { Box, Flex, FlexProps, Heading } from '@chakra-ui/core';
+import { Box, Flex, FlexProps, Heading } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import get from 'lodash.get';
 import Image from 'next/image';

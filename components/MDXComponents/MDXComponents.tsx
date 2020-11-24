@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
-import { Box, Alert, Code, HeadingProps, Kbd, Link, Text, Divider, useColorMode, Image } from '@chakra-ui/core';
+import { Box, Alert, Code, HeadingProps, Kbd, Link, Text, Divider, useColorMode, Image } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 import NextLink from 'next/link';
 

@@ -1,4 +1,4 @@
-import { Box, BoxProps, Divider, IconButton, useColorModeValue, useDisclosure } from '@chakra-ui/core';
+import { Box, BoxProps, Divider, IconButton, useColorModeValue, useDisclosure } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { useRouter } from 'next/router';

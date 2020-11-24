@@ -53,7 +53,7 @@ Create `./test/testUtils.tsx` as follows (e.g. for ThemeProvider etc.):
 ```js:testUtils.tsx
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ChakraProvider as ThemeProvider } from '@chakra-ui/core';
+import { ChakraProvider as ThemeProvider } from '@chakra-ui/react';
 
 const ChakraRenderer: React.FC = ({ children }: React.PropsWithChildren<Record<string, any>>) => {
   return <ThemeProvider>{children}</ThemeProvider>;

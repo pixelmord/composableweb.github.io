@@ -65,6 +65,7 @@ export const getMarkdownProps = async <T extends MarkdownFrontmatter>(
       fileRelativePath: fileRelativePath,
       parse: parseMarkdown as any,
     });
+
     const markdownObject = await mdxRenderToString(previewProps.props.file.data.markdownBody, {
       scope: previewProps.props.file.data.frontmatter,
     });

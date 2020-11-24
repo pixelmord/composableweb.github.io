@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
-import { Text, Spinner } from '@chakra-ui/core';
+import { Text, Spinner } from '@chakra-ui/react';
 
 import { titelize } from 'lib/slugHelpers';
 import Layout from '~components/ArticleLayout';
@@ -36,12 +36,12 @@ export const Article = ({ file }: MarkdownPageProps<PostFrontmatter>): React.Rea
       {router.isFallback ? (
         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
       ) : (
-        <>
-          <Heading as="h1">{frontmatter.title}</Heading>
-          {frontmatter.summary && <Text as="p">{frontmatter.summary}</Text>}
-          {markdown}
-        </>
-      )}
+          <>
+            <Heading as="h1">{frontmatter.title}</Heading>
+            {frontmatter.summary && <Text as="p">{frontmatter.summary}</Text>}
+            {markdown}
+          </>
+        )}
     </Layout>
   );
 };

@@ -1,4 +1,4 @@
-import { Box, Flex, FlexProps, AspectRatio, Stack } from '@chakra-ui/core';
+import { Box, Flex, FlexProps, AspectRatio, Stack } from '@chakra-ui/react';
 import { PropsWithoutRef, PropsWithChildren } from 'react';
 import Image from 'next/image';
 import { SectionBlockData } from '~lib/blocks/section';

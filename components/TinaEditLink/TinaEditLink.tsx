@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@chakra-ui/core';
+import { Button, ButtonProps } from '@chakra-ui/react';
 import { FiEdit } from 'react-icons/fi';
 import { useCMS } from 'tinacms';
 
